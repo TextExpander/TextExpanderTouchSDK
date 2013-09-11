@@ -2,6 +2,8 @@
 =======================
 Add [TextExpander](http://smilesoftware.com/TextExpander) support to your iOS app with the TextExpander touch Software Development Kit from [Smile](http://smilesoftware.com/).
 
+Please see the READ ME.rtf file for build and integration instructions and for the version history.
+
 [TextExpander touch SDK home page](http://smilesoftware.com/sdk)
 
 [TextExpander touch home page](http://smilesoftware.com/TextExpander/touch/index.html)
