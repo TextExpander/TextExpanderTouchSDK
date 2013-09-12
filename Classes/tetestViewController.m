@@ -282,13 +282,7 @@
     
 - (void)twiddleText:(UITextView*)textView {
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        NSRange selected = textView.selectedRange;
-        NSMutableAttributedString *as = [[[textView attributedText] mutableCopy] autorelease];
-        [as appendAttributedString:[[NSAttributedString alloc] initWithString:@" " attributes:nil]];
-        textView.attributedText = as;
-        [as deleteCharactersInRange:NSMakeRange(as.length - 1, 1)];
-        textView.attributedText = as;
-        textView.selectedRange = selected;
+        [textView.textStorage edited:NSTextStorageEditedCharacters range:NSMakeRange(0, textView.textStorage.length) changeInLength:0];
     }
 }
 
