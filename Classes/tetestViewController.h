@@ -24,6 +24,7 @@
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, retain) SMTEDelegateController *textExpander;
 @property (nonatomic, assign) BOOL snippetExpanded;
+@property (atomic, assign) BOOL warningReminderAccess;
 
 - (IBAction)testHTML: (id)sender;		// display the rich text HTML editor view
 

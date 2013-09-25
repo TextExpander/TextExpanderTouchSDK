@@ -13,10 +13,11 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* tetestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* tetestViewController.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28AD733F0D9D9553002E5188 /* TETestMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* TETestMainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* tetestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* tetestViewController.m */; };
 		30007D51162B5857001C195D /* SMTEDelegateController.h in Resources */ = {isa = PBXBuildFile; fileRef = 30007D50162B5857001C195D /* SMTEDelegateController.h */; };
 		30007D52162B5857001C195D /* SMTEDelegateController.h in Resources */ = {isa = PBXBuildFile; fileRef = 30007D50162B5857001C195D /* SMTEDelegateController.h */; };
+		3028A71C17F388420002255F /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C562417C064C100F67ECA /* EventKit.framework */; };
 		30334ACC16022BC800B3AEC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30334ACB16022BC800B3AEC4 /* Default-568h@2x.png */; };
 		305C562517C064C100F67ECA /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C562417C064C100F67ECA /* EventKit.framework */; };
 		30649EFF0FE6D3BF00564EF3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30649EFE0FE6D3BF00564EF3 /* AudioToolbox.framework */; };
@@ -33,8 +34,8 @@
 		30EE2D15112096A2002FAEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		30EE2D16112096A2002FAEB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		30EE2D17112096A2002FAEB8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30649EFE0FE6D3BF00564EF3 /* AudioToolbox.framework */; };
-		30EE2D21112096A3002FAEB8 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EE2D1F112096A3002FAEB8 /* MainWindow.xib */; };
-		30EE2D22112096A3002FAEB8 /* tetestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EE2D20112096A3002FAEB8 /* tetestViewController.xib */; };
+		30EE2D21112096A3002FAEB8 /* TETestMainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EE2D1F112096A3002FAEB8 /* TETestMainWindow-iPad.xib */; };
+		30EE2D22112096A3002FAEB8 /* tetestViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30EE2D20112096A3002FAEB8 /* tetestViewController-iPad.xib */; };
 		D383758D16D8367000EC7469 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E925161651A3550001AAEB /* CoreText.framework */; };
 		D3AC20181729B47F009B2E99 /* tetestInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AC20171729B47F009B2E99 /* tetestInputAccessoryView.m */; };
 		D3AC20191729B47F009B2E99 /* tetestInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AC20171729B47F009B2E99 /* tetestInputAccessoryView.m */; };
@@ -51,7 +52,7 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* tetestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = tetestViewController.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* TETestMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TETestMainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* tetestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tetestViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* tetestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tetestViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,8 +65,8 @@
 		30C17F6410423D7C0029B7BB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		30C17FD31042480C0029B7BB /* Default.textexpander */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Default.textexpander; sourceTree = "<group>"; };
 		30EE2D1C112096A2002FAEB8 /* tetest-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tetest-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		30EE2D1F112096A3002FAEB8 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = "Resources-iPad/MainWindow.xib"; sourceTree = "<group>"; };
-		30EE2D20112096A3002FAEB8 /* tetestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = tetestViewController.xib; path = "Resources-iPad/tetestViewController.xib"; sourceTree = "<group>"; };
+		30EE2D1F112096A3002FAEB8 /* TETestMainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "TETestMainWindow-iPad.xib"; path = "Resources-iPad/TETestMainWindow-iPad.xib"; sourceTree = "<group>"; };
+		30EE2D20112096A3002FAEB8 /* tetestViewController-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "tetestViewController-iPad.xib"; path = "Resources-iPad/tetestViewController-iPad.xib"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* tetest_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tetest_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* tetest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tetest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D3AC20161729B47F009B2E99 /* tetestInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tetestInputAccessoryView.h; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3028A71C17F388420002255F /* EventKit.framework in Frameworks */,
 				D383758D16D8367000EC7469 /* CoreText.framework in Frameworks */,
 				30EE2D14112096A2002FAEB8 /* Foundation.framework in Frameworks */,
 				30EE2D15112096A2002FAEB8 /* UIKit.framework in Frameworks */,
@@ -161,7 +163,7 @@
 				30C17FD31042480C0029B7BB /* Default.textexpander */,
 				30C17F6410423D7C0029B7BB /* Icon.png */,
 				2899E5210DE3E06400AC0155 /* tetestViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				28AD733E0D9D9553002E5188 /* TETestMainWindow.xib */,
 				8D1107310486CEB800E47090 /* tetest-Info.plist */,
 			);
 			name = Resources;
@@ -184,8 +186,8 @@
 		30EE2D1E112096A2002FAEB8 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
-				30EE2D1F112096A3002FAEB8 /* MainWindow.xib */,
-				30EE2D20112096A3002FAEB8 /* tetestViewController.xib */,
+				30EE2D1F112096A3002FAEB8 /* TETestMainWindow-iPad.xib */,
+				30EE2D20112096A3002FAEB8 /* tetestViewController-iPad.xib */,
 			);
 			name = "Resources-iPad";
 			sourceTree = "<group>";
@@ -265,7 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				28AD733F0D9D9553002E5188 /* TETestMainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* tetestViewController.xib in Resources */,
 				30C17F6510423D7C0029B7BB /* Icon.png in Resources */,
 				30C17FD41042480C0029B7BB /* Default.textexpander in Resources */,
@@ -280,8 +282,8 @@
 			files = (
 				30EE2D0D112096A2002FAEB8 /* Icon.png in Resources */,
 				30EE2D0E112096A2002FAEB8 /* Default.textexpander in Resources */,
-				30EE2D21112096A3002FAEB8 /* MainWindow.xib in Resources */,
-				30EE2D22112096A3002FAEB8 /* tetestViewController.xib in Resources */,
+				30EE2D21112096A3002FAEB8 /* TETestMainWindow-iPad.xib in Resources */,
+				30EE2D22112096A3002FAEB8 /* tetestViewController-iPad.xib in Resources */,
 				30007D52162B5857001C195D /* SMTEDelegateController.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

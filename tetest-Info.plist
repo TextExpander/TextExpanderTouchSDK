@@ -38,7 +38,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
+	<string>TETestMainWindow</string>
+	<key>NSMainNibFile~ipad</key>
+	<string>TETestMainWindow-iPad</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Access to reminders is required for TextExpander support.</string>
 	<key>UIApplicationExitsOnSuspend</key>
 	<false/>
 	<key>UIPrerenderedIcon</key>
@@ -50,7 +54,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSRemindersUsageDescription</key>
-	<string>Access to reminders is required for TextExpander support.</string>
 </dict>
 </plist>

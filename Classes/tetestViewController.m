@@ -20,6 +20,8 @@
 @synthesize webView = _webView;
 @synthesize searchBar = _searchBar;
 @synthesize textExpander = _textExpander;
+@synthesize snippetExpanded;
+@synthesize warningReminderAccess;
 
 - (void)viewDidLoad {
 	// Initialize the TextExpander delegate controller
@@ -52,8 +54,10 @@
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	[self.webView loadRequest:request];
 
-//    NSString* html = @"<body>TE Test<div><br></div><table><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table><div>Before starting with a snippet</div><div><br></div></body>";
-//    [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"/"]];
+    /*
+    NSString* html = @"<body id=\"myWebView\">TE Test<div><br></div><table><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table><div>Before starting with a snippet</div><div><br></div></body>";
+    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"/"]];
+    */
 
 	[self.searchBar setDelegate:self.textExpander];
 	
@@ -145,6 +149,8 @@
 				result = [NSString stringWithFormat: @"webview_ID:%@", fieldInfo];
 			else if ((fieldInfo = [uiTextObject objectForKey: SMTEkElementName]) != nil)
 				result = [NSString stringWithFormat: @"webview_Name:%@", fieldInfo];
+            if (result == nil)
+                result = @"myWebView";
 		}
 	}
 	
@@ -194,6 +200,7 @@
 							 fillWasCanceled: (BOOL)userCanceledFill
 							  cursorPosition: (NSInteger*)ioInsertionPointLocation;
 {
+    self.snippetExpanded = YES;
 	if ([@"myTextView" isEqualToString: textIdentifier]) {
 		[self.textView becomeFirstResponder];
 		UITextPosition *theLoc = [self.textView positionFromPosition: self.textView.beginningOfDocument
@@ -238,6 +245,11 @@
 		}
 		return nil;
 	}
+    if ([@"myWebView" isEqualToString: textIdentifier]) {
+        [self.webView becomeFirstResponder];
+        return [NSDictionary dictionaryWithObjectsAndKeys: self.webView, SMTEkWebView,
+                @"myWebView", SMTEkElementID, nil];
+    }
 	return nil;
 }
 
@@ -353,7 +365,7 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)inWebView {
-  //[inWebView stringByEvaluatingJavaScriptFromString:@"document.body.contentEditable ='true'; document.designMode='on';"];
+//    [inWebView stringByEvaluatingJavaScriptFromString:@"document.body.contentEditable ='true'; document.designMode='on';"];
 	NSLog(@"webViewDidFinishLoad");
 }
 
@@ -379,7 +391,7 @@
 }
 
 - (BOOL)appHasAccessToReminders {
-    __block BOOL result = NO;
+    BOOL result = NO;
     if ([[EKEventStore class] respondsToSelector:@selector(authorizationStatusForEntityType:)]) { // iOS 6+
         EKAuthorizationStatus authStatus = [[EKEventStore class] authorizationStatusForEntityType:EKEntityTypeReminder];
         if (authStatus == EKAuthorizationStatusAuthorized) {
@@ -392,7 +404,8 @@
 }
 
 - (void)alertIfNoRemindersAccess {
-    if (![self appHasAccessToReminders]) {
+    if (![self appHasAccessToReminders] && !self.warningReminderAccess) {	// Maybe only warn on iOS 7+, since the shared pasteboard still works on iOS 6
+		self.warningReminderAccess = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reminders Access Required", @"")
                                                                  message:NSLocalizedString(@"TextExpander support requires access to Reminders.\r\rVisit Settings > Privacy > Reminders to allow tetest to access Reminders.", @"")
@@ -402,6 +415,10 @@
             [alertView show];
         });
     }    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	self.warningReminderAccess = NO;
 }
 
 @end
