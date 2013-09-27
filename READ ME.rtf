@@ -2,8 +2,7 @@
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 CourierNewPSMT;
 \f3\fswiss\fcharset0 ArialMT;\f4\fnil\fcharset0 Baskerville;\f5\fnil\fcharset0 Apple-Chancery;
 }
-{\colortbl;\red255\green255\blue255;\red0\green0\blue153;\red255\green255\blue255;\red26\green26\blue26;
-}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue153;\red26\green26\blue26;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker -}{\leveltext\leveltemplateid1\'01-;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker -}{\leveltext\leveltemplateid101\'01-;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker -}{\leveltext\leveltemplateid102\'01-;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker -}{\leveltext\leveltemplateid103\'01-;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker -}{\leveltext\leveltemplateid201\'01-;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
@@ -489,30 +488,30 @@ SMTEDelegateController
 Reminders\
 \pard\pardeftab720
 
-\b0 \cf0 \cb3 \kerning1\expnd0\expndtw0 Prior to iOS 7, TextExpander used a persistent, named, UIPasteboard to share snippets and fill-in data with your app. As of iOS 7 this is no longer possible, so as of version 2.1, TextExpander now uses a completed Reminder to hold snippets (and another to hold fill-in data). These completed Reminders are dated August 25, 2009 (the day the TextExpander touch SDK was released) -- far enough in the past that users are unlikely to encounter these Reminders via casual usage.\
+\b0 \cf0 \kerning1\expnd0\expndtw0 Prior to iOS 7, TextExpander used a persistent, named, UIPasteboard to share snippets and fill-in data with your app. As of iOS 7 this is no longer possible, so as of version 2.1, TextExpander now uses a completed Reminder to hold snippets (and another to hold fill-in data). These completed Reminders are dated August 25, 2009 (the day the TextExpander touch SDK was released) -- far enough in the past that users are unlikely to encounter these Reminders via casual usage.\
 \
 If you are already supporting TextExpander 2.0, the basic steps for adoption of 2.1 and Reminder sharing in iOS 6 and 7 are:
-\f3\fs26 \cf4 \
+\f3\fs26 \cf3 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl340
 \ls9\ilvl0
 \f0\fs24 \cf0 {\listtext	1.	}Add EventKit to your app's linked frameworks
-\f3\fs26 \cf4 \
+\f3\fs26 \cf3 \
 \ls9\ilvl0
 \f0\fs24 \cf0 {\listtext	2.	}Add an\'a0NSRemindersUsageDescription entry to your app's Info.plist file
-\f3\fs26 \cf4 \
+\f3\fs26 \cf3 \
 \ls9\ilvl0
 \f0\fs24 \cf0 {\listtext	3.	}Update to the new\'a0TextExpander.framework
-\f3\fs26 \cf4 \
+\f3\fs26 \cf3 \
 \ls9\ilvl0
 \f0\fs24 \cf0 {\listtext	4.	}Test on devices (because the simulator doesn't do Reminders permissions)
-\f3\fs26 \cf4 \
+\f3\fs26 \cf3 \
 \pard\pardeftab720
 
 \f0\fs24 \cf0 To reset privacy permissions on a device for testing, visit Settings > General > Reset > Reset Location & Privacy.
-\f3\fs26 \cf4 \
+\f3\fs26 \cf3 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sl288\slmult1\pardirnatural
 
-\f0\fs24 \cf0 \cb1 \expnd0\expndtw0\kerning0
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
 \
 \pard\pardeftab720
 \cf0 \kerning1\expnd0\expndtw0 To protect privacy, Apple requires the user to approve Reminder access by both your app and by TextExpander touch. If your app has not already been granted or denied access to Reminders, then when the TextExpander framework attempts to access the shared snippets, it will ask the system for Reminders access unless you 
@@ -567,7 +566,8 @@ Support\
 Smile offers no promise of support for the TextExpander framework. If you have questions, please address them via email to {\field{\*\fldinst{HYPERLINK "mailto:textexpander-touch@smilesoftware.com"}}{\fldrslt \cf2 \expnd0\expndtw0\kerning0
 \ul \ulc2 textexpander-touch@smilesoftware.com}}. As time and resources permit, we will attempt to answer such questions. Of course, if you are willing to add TextExpander support to your app, it is in our best interest to endeavor to support you.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sl288\slmult1\pardirnatural
-\cf0 Stay informed about new versions of the TextExpander framework on this announcement-only Google Group: https://groups.google.com/forum/#!forum/tetouch-sdk\
+\cf0 \expnd0\expndtw0\kerning0
+Stay informed about new versions of the TextExpander framework on this announcement-only Google Group: https://groups.google.com/forum/#!forum/tetouch-sdk\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sl288\slmult1\pardirnatural
 
@@ -670,6 +670,13 @@ Thank you,\
 
 \b \cf0 \expnd0\expndtw0\kerning0
 Release Notes\
+\
+2.2.1 (2013-09-27)
+\b0 \expnd0\expndtw0\kerning0
+\
+- Resolves crash on arm64 found when testing on iPhone 5S\
+
+\b \expnd0\expndtw0\kerning0
 \
 2.2 (2013-09-25)
 \b0 \expnd0\expndtw0\kerning0
