@@ -85,6 +85,9 @@
 
 @interface SMTEDelegateController : NSObject <UITextViewDelegate, UITextFieldDelegate, UIScrollViewDelegate, UIWebViewDelegate, UISearchBarDelegate> {
 }
+// The name of your app to be displayed in the fetch settings and/or fill-in window, ex. "SuperEditor"
+@property (nonatomic, retain) NSString *clientAppName;
+
 @property (nonatomic, assign) id nextDelegate;
 @property (nonatomic, assign) BOOL provideUndoSupport; // Default: YES
 
@@ -97,28 +100,37 @@
 // URL scheme for fill-in snippet completion via x-callback-url. Leave nil to
 // avoid the fill-in process.
 @property (nonatomic, retain) NSString *fillCompletionScheme;
-// The name of your app to be displayed in the fill-in window, ex. "SuperEditor"
-@property (nonatomic, retain) NSString *fillForAppName;
 @property (nonatomic, assign) NSObject<SMTEFillDelegate> *fillDelegate;
 
 + (BOOL)isTextExpanderTouchInstalled;		// is any version of TEt installed?
 + (BOOL)textExpanderTouchSupportsFillins;	// essentially, is TEt 2.0 or higher installed?
 
-/*
- * Is TextExpander permitted to request access to Reminders? (default: YES)
- * If you turn this off, your app must handle access to Reminders and must alert
- * the user that access is required when they turn TextExpander on.
+/**
+ * On iOS 6, returns YES if the shared UIPasteboard is available.
+ * On iOS 7, returns YES only if your app has already fetched shared snippet data and it
+ * still resides in a persistent UIPasteboard.
+ *
+ * @param optionalModDate can return the modification date of the found settings, or nil
+ *
+ * @return YES if shared snippets can be accessed and are found
  */
-+ (void)setAllowRemindersAccessRequest:(BOOL)allow;
++ (BOOL)snippetsAreShared: (NSDate**)optionalModDate;
 
-/*
- * On iOS 6, returns YES if app has access to Reminders and the shared TextExpander
- * Data reminder is present OR if the shared UIPasteboard is available.
- * On iOS 7, returns YES only if app has access to Reminders and the shared TextExpander
- * Data reminder is present.
- */
-+ (BOOL)snippetsAreShared;
 + (void)setExpansionEnabled:(BOOL)expansionEnabled;
+
+
+/**
+ * On iOS 7, if your app has at some point fetched shared snippet data, then it will reside
+ * in a persistent named UIPasteboard, with your team ID invisibly pre-fixed to the name.
+ *
+ * If the user turns off TextExpander support in your app, you can call this method to clear
+ * that UIPasteboard so your app/team will no longer be using any persistent storage for snippet data.
+ * Note that because of the team ID, this will also apply to any of your other apps as well, so
+ * use with caution.
+ *
+ * In iOS 5 and 6 this method just clears any loaded-in-memory snippet settings.
+ */
++ (void)clearSharedSnippets;
 
 /*
  * UIText___Delegate methods let TE know when the text selection range or insertion cursor position has
@@ -129,12 +141,57 @@
 
 /*
  * When your app becomes the active app, it means TEtouch may have been active, where the user might have
- * edited snippets, etc. This checks to see if snippets have been updated.
+ * edited snippets, etc. On iOS 5 and 6, this checks to see if snippets have been updated.
  */
 - (void)willEnterForeground;
 
 /*
- * stringByExpandingAbbreviations will expand any snippet abbreviations found in the inString.
+ * Tells if TextExpander 2.3 or above is installed, which means TextExpander can respond to
+ * a getSnippets call.
+ */
++ (BOOL)textExpanderTouchHasGetSnippetsCallbackURL;
+
+/*
+ * Your app's URL scheme to handle the getSnippets x-callback-url.
+ * (This can be the same URL scheme that you set for the fillCompletionScheme)
+ * You must declare a URL scheme and implement
+ * - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+ *
+ * In that implementation, the getSnippets call will result in your app receiving openURL with one of:
+ *   getSnippetsScheme://x-callback-url/TextExpanderSettings?[params for the SDK]
+ *    or
+ *   getSnippetsScheme://x-callback-url/TextExpanderSettingscanceled   (user canceled or refused)
+ *    or
+ *   getSnippetsScheme://x-callback-url/TextExpanderSettingserror?error-Code=NNN&errorMessage=blah+blah+blah
+ *
+ * If the scheme matches, the [url.host isEqualToString: @"x-callback-url"], and the [url path] begins with /TextExpanderSettings,
+ * then your openURL handler should call the SDK's handleGetSnippetsURL: with the url, and return the value it returns.
+ */
+@property (nonatomic, retain) NSString *getSnippetsScheme;
+
+/*
+ * Attempts to fetch/update shared snippets and settings from the TextExpander app.
+ *
+ * Returns YES if the openURL call to TextExpander's settings-fetching URL succeeded.
+ * (That is, it returns more-or-less immediately. The settings will arrive when your app
+ *  is re-activated.)
+ *
+ * After a brief switch to the TextExpander app, your app will be re-activated via a getSnippetsScheme URL.
+ */
+- (BOOL)getSnippets;
+
+/*
+ * Call this method to handle openURL with a URL that begins with "[your getSnippetsScheme]://x-callback-url/SMTEsetting..."
+ *
+ * The returned value is what your app delegate should return from openURL (which is almost always YES, unless the URL seems
+ * malformed), while the optionalReturnedError will tell you that, despite a YES returned indicating the URL was processed,
+ * the snippets were not successfully fetched.
+ * The optionalCancelFlag similarly tells that, despite the URL processing all working, the user canceled.
+ */
+- (BOOL)handleGetSnippetsURL: (NSURL*)url error: (NSError**)optionalReturnedError cancelFlag: (BOOL*)optionalCancelFlag;
+
+/**
+ * Expands any snippet abbreviations found in the inString.
  * That is, you could pass just "sig1" to get a signature snippet's expansion, or you could
  * pass "ddate is the time to call me at ttel" to get date and phone snippets into the text.
  *
@@ -142,13 +199,18 @@
  * snippet text will be replaced with "(variablename)".
  *
  * Note: in 1.2.3 and prior versions, stringByExpandingAbbreviations improperly returned a retained string
+ *
+ * @param inString text to be examined for snippet abbreviations
+ *
+ * @return the string with any abbreviations expanded
  */
 - (NSString*)stringByExpandingAbbreviations:(NSString*)inString;
 
-/*
- * attributedStringByExpandingAbbreviations works just like stringByExpandingAbbreviations, but
- * with attributed strings.
- * This method respects the expandPlainTextOnly flag -- if set, expansions will take on
+/**
+ * Works just like stringByExpandingAbbreviations, but with attributed strings. Plain text snippets
+ * simply take on the attributes of their abbreviations.
+ *
+ * This method respects the expandPlainTextOnly flag -- if set, all expansions will take on
  * the same attributes as their abbreviations.
  *
  * Note that fill-in snippets are not supported in this expansion method (%fill macros in the 
@@ -156,6 +218,10 @@
  *
  * In iOS versions prior to 6.0, this will expand the snippets as "plain" text (actually, in
  * text matching the style of the abbreviation).
+ *
+ * @param inString text to be examined for snippet abbreviations
+ *
+ * @return the string with any abbreviations expanded
  */
 - (NSAttributedString*)attributedStringByExpandingAbbreviations:(NSAttributedString*)inString;
 

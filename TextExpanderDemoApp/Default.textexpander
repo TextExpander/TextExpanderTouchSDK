@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Auditory Feedback</key>
+	<true/>
+	<key>Client Mode</key>
+	<integer>0</integer>
+	<key>Cross Platform Images</key>
+	<true/>
+	<key>Remote Snippets</key>
+	<array/>
+	<key>Restore Pasteboard</key>
+	<true/>
+	<key>Snippet Menu Item Width</key>
+	<integer>370</integer>
+	<key>Snippets Imported</key>
+	<date>2009-06-27T14:43:07Z</date>
+	<key>Status Item</key>
+	<true/>
+	<key>applaststatus</key>
+	<integer>0</integer>
+	<key>checkforupdates</key>
+	<true/>
+	<key>checkfrequency</key>
+	<integer>7</integer>
+	<key>groupsTE2</key>
+	<array>
+		<dict>
+			<key>expandAfterMode</key>
+			<integer>0</integer>
+			<key>expanderExceptionsMode</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>Sample Snippets</string>
+			<key>snippetUUIDs</key>
+			<array>
+				<string>4F975E93-D03E-4DD4-BDCB-9EAFA7304E45</string>
+				<string>92869B46-1AEA-4BA8-8FC7-95E603D81383</string>
+				<string>EDDE1604-CE77-4DFD-A63E-582395C522F4</string>
+				<string>CE3BF525-9B48-4B61-B6E8-A4F0A00C7482</string>
+				<string>DB59EAA8-3C18-4274-8756-035509D0CD81</string>
+				<string>426FAE02-A700-47A1-8129-98438B53EC26</string>
+				<string>BC5508E9-1D45-4E54-9C2D-8CCF26578024</string>
+				<string>89950CA5-2230-4E83-B08E-DC307ED09AF7</string>
+				<string>8FAA3969-18B9-45F4-89F2-B3F53F29869F</string>
+				<string>2F84D7B4-C2BE-40A1-B4FB-917AED05EB06</string>
+				<string>D7E9A852-FD76-4E8B-8620-A6D089F24314</string>
+			</array>
+			<key>updateFrequency</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>AD1FE37D-4C30-4026-8E30-83E3394A551C</string>
+			<key>writable</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>groupsToDeleteDuringSync</key>
+	<array/>
+	<key>outlineState</key>
+	<array>
+		<string>AD1FE37D-4C30-4026-8E30-83E3394A551C</string>
+	</array>
+	<key>snippetsTE2</key>
+	<array>
+		<dict>
+			<key>abbreviation</key>
+			<string>tyvm</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T14:40:41Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T14:41:06Z</date>
+			<key>plainText</key>
+			<string>Thank you very much!</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>4F975E93-D03E-4DD4-BDCB-9EAFA7304E45</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>sig1</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T14:42:31Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T14:46:05Z</date>
+			<key>plainText</key>
+			<string>Cheers,
+
+Jane Smith
+Senior Vice President
+Acme, Inc.</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>92869B46-1AEA-4BA8-8FC7-95E603D81383</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>sig2</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T14:47:23Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T14:48:42Z</date>
+			<key>plainText</key>
+			<string>Yours sincerely,
+
+Jane Smith
+PTA President
+Cupertino Elementary School</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>EDDE1604-CE77-4DFD-A63E-582395C522F4</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>sig3</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2013-04-29T22:22:32Z</date>
+			<key>extraInfo</key>
+			<dict>
+				<key>RTF</key>
+				<string>{\rtf1\ansi
+{\fonttbl\f0\fnil\fcharset0 Baskerville;\f1\fnil\fcharset0 SnellRoundhand;\f2\fnil\fcharset0 Baskerville-Bold;}
+{\colortbl;}
+\f0\fs34 \cf0 \ri8640
+Best regards,\
+\f1\fs40\i Jane Smith\
+\f0\fs34\i0 Senior Vice President\
+\f2\b Acme, Inc.}</string>
+			</dict>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2013-04-29T22:25:53Z</date>
+			<key>plainText</key>
+			<string>Best regards,
+Jane Smith
+Senior Vice President
+Acme, Inc.</string>
+			<key>snippetType</key>
+			<integer>1</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>CE3BF525-9B48-4B61-B6E8-A4F0A00C7482</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>ttel</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T14:48:54Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T14:49:10Z</date>
+			<key>plainText</key>
+			<string>415-555-1212</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>DB59EAA8-3C18-4274-8756-035509D0CD81</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>aaddr</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T14:49:15Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T14:49:51Z</date>
+			<key>plainText</key>
+			<string>123 Market Street
+San Francisco, CA</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>426FAE02-A700-47A1-8129-98438B53EC26</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>ddate</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T14:50:01Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T14:51:11Z</date>
+			<key>plainText</key>
+			<string>%e %B %Y</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>BC5508E9-1D45-4E54-9C2D-8CCF26578024</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>sms1</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T16:13:40Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T16:31:23Z</date>
+			<key>plainText</key>
+			<string>I'm running late. Be there soon.</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>89950CA5-2230-4E83-B08E-DC307ED09AF7</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>sms2</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T16:30:15Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2009-06-19T16:31:19Z</date>
+			<key>plainText</key>
+			<string>Traffic is terrible. I'll be late. Sorry.</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>8FAA3969-18B9-45F4-89F2-B3F53F29869F</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>sms3</string>
+			<key>abbreviationMode</key>
+			<integer>0</integer>
+			<key>creationDate</key>
+			<date>2009-06-19T16:30:52Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2013-04-29T21:57:48Z</date>
+			<key>plainText</key>
+			<string>I forgot all about our appointment. Can we reschedule?</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>0</integer>
+			<key>uuidString</key>
+			<string>2F84D7B4-C2BE-40A1-B4FB-917AED05EB06</string>
+		</dict>
+		<dict>
+			<key>abbreviation</key>
+			<string>dnthx</string>
+			<key>abbreviationMode</key>
+			<integer>1</integer>
+			<key>creationDate</key>
+			<date>2012-01-13T23:46:02Z</date>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>label</key>
+			<string></string>
+			<key>modificationDate</key>
+			<date>2013-04-29T21:58:50Z</date>
+			<key>plainText</key>
+			<string>Dear %filltext:name=person name:width:25%,
+
+Thank you for your generous donation of $%filltext:name=amount:width:4%. We greatly appreciate your help, and will use the funds for %fillpopup:name=popup 4:default=our educational program:our health clinic:general purposes%.
+
+Since we are a non-profit organization, your donation of $%filltext:name=amount:width:4% should be tax-deductible.
+
+Thank you,
+</string>
+			<key>snippetType</key>
+			<integer>0</integer>
+			<key>useCount</key>
+			<integer>12</integer>
+			<key>uuidString</key>
+			<string>D7E9A852-FD76-4E8B-8620-A6D089F24314</string>
+		</dict>
+	</array>
+	<key>snippetsToDeleteDuringSync</key>
+	<array/>
+	<key>wantsDaemonEnabled</key>
+	<true/>
+</dict>
+</plist>
