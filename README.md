@@ -52,9 +52,11 @@ To acquire / update snippet data, your app needs to:
 
 Note that you can use an existing URL scheme as your getSnippetsScheme if you want to. The callback URLs will look like these:
 
-- getSnippetsScheme://x-callback-url/TextExpanderSettings
+- getSnippetsScheme://x-callback-url/TextExpanderSettings*[more…]*
 
 So you can easily examine the URL for the presence of x-callback-url in the URL host and /TextExpander as the prefix of the URL path to determine whether or not a given URL is a snippet data callback to your URL scheme.
+
+To provide user's information about the current status of TextExpander data, you can use `expansionStatusForceLoad:snippetCount:loadDate:error:` to obtain the last-obtained snippet settings'  modification date, or find that no snippet settings have yet been fetched.
 
 Please note that it is possible, though unlikely, that your app will be unloaded when TextExpander touch is launched. You may find that you will need code before or after you call [SMTEDelegateController handleGetSnippetsURL:] to check your app's state and to restore it if necessary.
 
@@ -210,6 +212,15 @@ Thank you,
 
 
 ### Release Notes
+
+**2.3.1 (2013-12-21)**
+
+- Fixes crash in iOS 5 if any formatted snippets are found on load
+- Snippet loading moved to async queue if triggered by `textThingShouldBeginEditing:` or `webViewDidFinishLoad:` (for users with multi-Megabyte settings, loading can take several seconds)
+- Adds `expansionStatusForceLoad:snippetCount:loadDate:error:` to tell snippets status and/or force snippet loading
+- Fixes bug where abbreviations containing '/' or '.' characters would not expand in UIWebView
+- Stop falsely giving "Settings indicate snippets have never been imported" log message
+- Won't make the x-callback-url openURL call if no getSnippetsScheme has been set (TEtouch 2.3.1 handles bad URLs better as well)
 
 **2.3 (2013-11-25)**
 

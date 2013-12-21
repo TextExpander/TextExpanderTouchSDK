@@ -116,6 +116,42 @@
  */
 + (BOOL)snippetsAreShared: (NSDate**)optionalModDate;
 
+/**
+ * Tells whether snippet expansion is possible with current state of shared/fetched settings.
+ *
+ * That is, returns YES if snippets have either already been loaded, or if there is
+ * non-zero-length data on the persistent UIPasteboard where shared snippets from a
+ * previous fetch (iOS 7) or from Share Snippets in TEtouch (iOS 6).
+ *
+ * @param loadIfNotLoaded attempt to load snippets and settings if not yet loaded, or
+ * if the shared UIPasteboard date does not match date of loaded snippets (date mismatch
+ * only applies if pre-iOS 7 and your app did not call willEnterForeground)
+ * Note: If set and not yet loaded, this will load the snippets synchronously on the current
+ * dispatch queue. You can call this off of the main queue to avoid blocking if the user
+ * has a large snippet collection.
+ * Because loading may fail, this might return YES if loadIfNotLoaded is NO, then later
+ * return NO if loading failed.
+ *
+ * @param optionalCount can return the number of _loaded_ snippets (can be zero with a
+ * YES return value if the snippet pasteboard data has not been read in yet)
+ *
+ * @param optionalLoadedDate can return the modification date of the pasteboard data, or nil if no
+ * pasteboard data is found
+ *
+ * @param optionalLoadError can return snippet load error if load has been attempted and failed
+ *
+ * @return YES if shared snippets can be accessed and are found
+ */
++ (BOOL)expansionStatusForceLoad: (BOOL)loadIfNotLoaded
+					snippetCount: (NSUInteger*)optionalCount
+						loadDate: (NSDate**)optionalLoadedDate
+						   error: (NSError**)optionalLoadError;
+
+/**
+ * Turn expansion off or on.
+ *
+ * @param New snippet abbreviation expansion setting
+ */
 + (void)setExpansionEnabled:(BOOL)expansionEnabled;
 
 
@@ -181,12 +217,20 @@
 - (BOOL)getSnippets;
 
 /*
- * Call this method to handle openURL with a URL that begins with "[your getSnippetsScheme]://x-callback-url/SMTEsetting..."
+ * Call this method to handle application:openURL: with a URL that begins with "[your getSnippetsScheme]://x-callback-url/SMTEsetting..."
  *
  * The returned value is what your app delegate should return from openURL (which is almost always YES, unless the URL seems
- * malformed), while the optionalReturnedError will tell you that, despite a YES returned indicating the URL was processed,
+ * malformed)
+ *
+ * If YES is returned, and no error or cancel is indicated, you can call [SMTEdel expansionStatusForceLoad: NO snippetCount: &optionalCount loadDate: &loadedDate error: nil]
+ * to display a "snippets updated December 6, 2013" or "22 snippets loaded" status message for the user.
+ *
+ * @param optionalReturnedError being non-nil indicates that (despite a YES returned indicating the URL was processed)
  * the snippets were not successfully fetched.
- * The optionalCancelFlag similarly tells that, despite the URL processing all working, the user canceled.
+ *
+ * @param optionalCancelFlag similarly indicates that the URL is valid, but the user canceled in TextExpander, so no snippets arrived.
+ *
+ * @return YES if the callback URL was valid, and application:openURL: should return YES.
  */
 - (BOOL)handleGetSnippetsURL: (NSURL*)url error: (NSError**)optionalReturnedError cancelFlag: (BOOL*)optionalCancelFlag;
 

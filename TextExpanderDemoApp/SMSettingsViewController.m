@@ -24,16 +24,19 @@ typedef enum {
 {
     [super viewDidLoad];
     [self updateCells];
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self updateCells];
+		[self.tableView reloadData];
     }];
     [[NSNotificationCenter defaultCenter] addObserverForName:NSUserDefaultsDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self updateCells];
+		[self.tableView reloadData];
     }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self updateCells];
+	[self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -60,23 +63,59 @@ typedef enum {
         [self.textExpanderToggleCell.contentView addSubview:self.textExpanderToggle];
     }
     if (self.textExpanderUpdateCell == nil) {
-        self.textExpanderUpdateCell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:@"textExpanderUpdateCell"];
+        self.textExpanderUpdateCell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:@"textExpanderUpdateCell"];
         self.textExpanderUpdateCell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        if (textExpanderIsInstalled) {
-            self.textExpanderUpdateCell.textLabel.text = @"Update Snippets";
-        } else {
-            self.textExpanderUpdateCell.textLabel.text = @"Get TextExpander";
-        }
     }    
     BOOL useTextExpander = [[NSUserDefaults standardUserDefaults] boolForKey:SMTEExpansionEnabled];
-    if (![SMTEDelegateController snippetsAreShared:nil]) {
-        NSLog(@"Might want to encourage user to update snippets");
-    }
     self.textExpanderToggle.on = textExpanderIsInstalled && useTextExpander;
     self.textExpanderToggle.enabled = textExpanderIsInstalled;
     self.textExpanderToggleCell.userInteractionEnabled = textExpanderIsInstalled;
     self.textExpanderToggleCell.textLabel.enabled = textExpanderIsInstalled;
     self.textExpanderToggleCell.detailTextLabel.enabled = textExpanderIsInstalled;
+	
+	if (textExpanderIsInstalled && useTextExpander) {
+		self.textExpanderUpdateCell.textLabel.enabled = YES;
+		self.textExpanderUpdateCell.detailTextLabel.enabled = YES;
+		NSDate *modDate;
+		NSError *loadErr;
+		NSUInteger snipCount;
+		BOOL haveSettings = [SMTEDelegateController expansionStatusForceLoad: NO snippetCount: &snipCount loadDate: &modDate error: &loadErr];
+		if (haveSettings) {
+			self.textExpanderUpdateCell.textLabel.text = @"Update Snippets";
+			if (loadErr != nil) {
+				self.textExpanderUpdateCell.detailTextLabel.text = [NSString stringWithFormat: @"Error: %@", [loadErr description]];
+			} else if (modDate != nil) {		// mod date present means that snippet data is already stored
+				NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+				[formatter setDateStyle:NSDateFormatterShortStyle];
+				[formatter setTimeStyle: NSDateFormatterShortStyle];
+				NSString *lastDateStr = [formatter stringFromDate: modDate];
+				if (snipCount > 0) {	// snippets means the snippet data has been loaded
+					self.textExpanderUpdateCell.detailTextLabel.text = [NSString stringWithFormat: @"%ld snippets modified: %@", (long)snipCount, lastDateStr];
+				}
+				else {		// snippet data is present, but has not been loaded yet
+					self.textExpanderUpdateCell.detailTextLabel.text = [NSString stringWithFormat: @"Modified: %@", lastDateStr];
+				}
+			}
+			else	// shouldn't get to this case except in weird error scenario
+				self.textExpanderUpdateCell.detailTextLabel.text = nil;
+		} else if (loadErr != nil) {
+			self.textExpanderUpdateCell.textLabel.text = @"Fetch Snippets";
+			self.textExpanderUpdateCell.detailTextLabel.text = [NSString stringWithFormat: @"Error: %@", [loadErr description]];
+		} else {
+			self.textExpanderUpdateCell.textLabel.text = @"Fetch Snippets";
+			self.textExpanderUpdateCell.detailTextLabel.text = @"(no snippets loaded yet)";
+		}
+	} else if (textExpanderIsInstalled) {
+		self.textExpanderUpdateCell.textLabel.enabled = NO;
+		self.textExpanderUpdateCell.detailTextLabel.enabled = NO;
+		self.textExpanderUpdateCell.textLabel.text = @"Expansion disabled";
+		self.textExpanderUpdateCell.detailTextLabel.text = nil;
+	} else {
+		self.textExpanderUpdateCell.textLabel.enabled = YES;
+		self.textExpanderUpdateCell.detailTextLabel.enabled = NO;
+		self.textExpanderUpdateCell.textLabel.text = @"Get TextExpander";
+		self.textExpanderUpdateCell.detailTextLabel.text = nil;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,6 +138,9 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] == SMTESettingsViewUpdateIndex) {
+		BOOL useTextExpander = [[NSUserDefaults standardUserDefaults] boolForKey:SMTEExpansionEnabled];
+		if (!useTextExpander)
+			return;		// ignore taps if expansion is disabled
         if ([SMTEDelegateController isTextExpanderTouchInstalled]) {
             if (self.textExpander == nil) {
                 // Lazy load of TextExpander
@@ -121,6 +163,10 @@ typedef enum {
         BOOL newIsEnabled = [sender isOn];
         [SMTEDelegateController setExpansionEnabled:newIsEnabled];
 		[[NSUserDefaults standardUserDefaults] setBool: newIsEnabled forKey: SMTEExpansionEnabled];
+		// You can wipe out any stored snippet data by doing this:
+//		if (!newIsEnabled) {
+//			[SMTEDelegateController clearSharedSnippets];
+//		}
     }
 }
 
