@@ -9,7 +9,7 @@ The teTouchSDK project is a working example app demonstrating how to add TextExp
 
 [TextExpander touch home page](http://smilesoftware.com/TextExpander/touch/index.html)
 
-[Basic tutorial](http://smile.clarify-it.com/d/lkwwdw)
+[Basic tutorial](http://smile.clarify-it.com/d/lkwwdw)  (Note: Based on pre-2.0 version of the SDK -- useful for the basic setup, but you must implement steps described in [Acquiring / Updating Snippet Data][acquiring] below as snippet fetching has changed significantly)
 
 [Fill-ins tutorial](http://smile.clarify-it.com/d/ehf7a4)
 
@@ -36,7 +36,7 @@ The teTouchSDK project is a working example app demonstrating how to add TextExp
 
 TextExpanderDemoApp is an iPhone app, which demonstrates acquiring / updating snippet data via its Settings view, usage of TextExpander in UITextField, UITextView, UISearchBar, and UIWebView. It includes a regular web view and a content editable web view. It's not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily in your app. To dismiss the keyboard in the Text Views view, tap the blank area on either side of the UITextField.
 
-### Acquiring / Updating Snippet Data
+### Acquiring / Updating Snippet Data[acquiring]###
 
 As of November 25, 2013 (and SDK version 2.3), apps which implement the TextExpander touch SDK in iOS 7 or later must use an x-callback-url to acquire and update TextExpander snippet data in response to user action. This differs from the previous Reminders and persistent pasteboard methods, both of which have been retired by Apple. For background, see [this post](https://groups.google.com/forum/#!topic/tetouch-sdk/x_tQWItEDnk) on our Google Group.
 
@@ -56,7 +56,7 @@ Note that you can use an existing URL scheme as your getSnippetsScheme if you wa
 
 So you can easily examine the URL for the presence of x-callback-url in the URL host and /TextExpander as the prefix of the URL path to determine whether or not a given URL is a snippet data callback to your URL scheme.
 
-To provide user's information about the current status of TextExpander data, you can use `expansionStatusForceLoad:snippetCount:loadDate:error:` to obtain the last-obtained snippet settings'  modification date, or find that no snippet settings have yet been fetched.
+To provide users information about the current status of TextExpander data, you can use `expansionStatusForceLoad:snippetCount:loadDate:error:` to obtain the last-obtained snippet settings'  modification date, or find that no snippet settings have yet been fetched.
 
 Please note that it is possible, though unlikely, that your app will be unloaded when TextExpander touch is launched. You may find that you will need code before or after you call [SMTEDelegateController handleGetSnippetsURL:] to check your app's state and to restore it if necessary.
 
@@ -67,7 +67,7 @@ Please note that it is possible, though unlikely, that your app will be unloaded
 - **UISearchBar**: instantiate SMTEDelegateController and set it as the delegate of the UISearchBar
 - To add your own delegate to a UITextView/Field/SearchBar, call -[SMTEDelegateController setNextDelegate:] on the instance you created. Your delegate will be called after TextExpander has a chance to process the delegate calls. In the shouldChangeText/CharactersInRange: call, you can examine SMTEDelegate.isAttemptingToExpandText to see if TextExpander is going to expand a snippet based on the current character(s) being inserted. Returning NO will prevent that snippet expansion.
 - A single SMTEDelegateController can service many UITextViews, UITextFields, UIWebViews, and UISearchBars. If you use setNextDelegate for multiple views or fields, please be sure to test the view or field passed to your delegate and respond accordingly.
-- Look at the example app's file tetestViewController.m to see examples of all these.
+- Look at the example app's file SMFirstViewController.m and SMSecondViewController.m to see examples of all these.
 
 ### Handling Attributed Text
 
@@ -93,7 +93,7 @@ In the simplest case, where your view is all formatted the same way, these metho
 		self.text = [newText string];
 	}
 
-(Note: To avoid locking up when performing a snippet expansion Undo using setAttributedText:, TextExpander uses `dispatch_async(dispatch_get_main_queue(), ^{ blah setAttributedText: blah }); `)
+(Note: To avoid locking up when performing a snippet expansion Undo using setAttributedText:, TextExpander uses `dispatch_async(dispatch_get_main_queue(), ^{ blah setAttributedText: changedText }); `)
 
 ### Supporting Fill-in Snippets
 
@@ -147,7 +147,7 @@ Stay informed about new versions of the TextExpander framework on this announcem
 
 ### License Agreement
 
-The TextExpander framework is Copyright © 2009-2013 SmileOnMyMac, LLC dba Smile, and is supplied "AS IS" and without warranty. SmileOnMyMac, LLC disclaims all warranties, expressed or implied, including, without limitation the warranties of merchantability and of fitness for any purpose. SmileOnMyMac assumes no liability for direct, indirect, incidental, special, exemplary, or consequential damages, which may result from the use of the TextExpander framework, even if advised of the possibility of such damage.
+The TextExpander framework is Copyright © 2009-2014 SmileOnMyMac, LLC dba Smile, and is supplied "AS IS" and without warranty. SmileOnMyMac, LLC disclaims all warranties, expressed or implied, including, without limitation the warranties of merchantability and of fitness for any purpose. SmileOnMyMac assumes no liability for direct, indirect, incidental, special, exemplary, or consequential damages, which may result from the use of the TextExpander framework, even if advised of the possibility of such damage.
 
 Permission is hereby granted to use, copy, and distribute this library, without fee, subject to the following restrictions:
 
