@@ -9,7 +9,7 @@ The teTouchSDK project is a working example app demonstrating how to add TextExp
 
 [TextExpander touch home page](http://smilesoftware.com/TextExpander/touch/index.html)
 
-[Basic tutorial](http://smile.clarify-it.com/d/lkwwdw)  (Note: Based on pre-2.0 version of the SDK -- useful for the basic setup, but you must implement steps described in [Acquiring / Updating Snippet Data][acquiring] below as snippet fetching has changed significantly)
+[Basic tutorial](http://smile.clarify-it.com/d/lkwwdw)  (Note: Based on pre-2.0 version of the SDK -- useful for the basic setup, but you must implement steps described in [Acquiring / Updating Snippet Data][] below as snippet fetching has changed significantly)
 
 [Fill-ins tutorial](http://smile.clarify-it.com/d/ehf7a4)
 
@@ -36,7 +36,7 @@ The teTouchSDK project is a working example app demonstrating how to add TextExp
 
 TextExpanderDemoApp is an iPhone app, which demonstrates acquiring / updating snippet data via its Settings view, usage of TextExpander in UITextField, UITextView, UISearchBar, and UIWebView. It includes a regular web view and a content editable web view. It's not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily in your app. To dismiss the keyboard in the Text Views view, tap the blank area on either side of the UITextField.
 
-### Acquiring / Updating Snippet Data[acquiring]###
+### Acquiring / Updating Snippet Data###
 
 As of November 25, 2013 (and SDK version 2.3), apps which implement the TextExpander touch SDK in iOS 7 or later must use an x-callback-url to acquire and update TextExpander snippet data in response to user action. This differs from the previous Reminders and persistent pasteboard methods, both of which have been retired by Apple. For background, see [this post](https://groups.google.com/forum/#!topic/tetouch-sdk/x_tQWItEDnk) on our Google Group.
 
