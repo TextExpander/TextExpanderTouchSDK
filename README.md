@@ -9,7 +9,7 @@ The teTouchSDK project is a working example app demonstrating how to add TextExp
 
 [TextExpander touch home page](http://smilesoftware.com/TextExpander/touch/index.html)
 
-[Basic tutorial](http://smile.clarify-it.com/d/lkwwdw)  (Note: Based on pre-2.0 version of the SDK -- useful for the basic setup, but you must implement steps described in [Acquiring / Updating Snippet Data][] below as snippet fetching has changed significantly)
+[Basic tutorial](http://smile.clarify-it.com/d/lkwwdw)  (Note: Based on pre-2.0 version of the SDK -- useful for the basic setup, but you must implement steps described in [Acquiring / Updating Snippet Data](#acquiring--updating-snippet-data) below as snippet fetching has changed significantly)
 
 [Fill-ins tutorial](http://smile.clarify-it.com/d/ehf7a4)
 
