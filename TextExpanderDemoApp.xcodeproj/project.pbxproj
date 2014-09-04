@@ -23,7 +23,6 @@
 		307C4A1B18412EC200A7C044 /* SMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C4A1A18412EC200A7C044 /* SMSecondViewController.m */; };
 		307C4A1D18412EC200A7C044 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C4A1C18412EC200A7C044 /* second.png */; };
 		307C4A1F18412EC200A7C044 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C4A1E18412EC200A7C044 /* second@2x.png */; };
-		307C4A261841314D00A7C044 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
 		307C4A281841315A00A7C044 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A271841315A00A7C044 /* AudioToolbox.framework */; };
 		307C4A2A1841316800A7C044 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A291841316800A7C044 /* CoreText.framework */; };
 		307C4A2D184134DA00A7C044 /* SMThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C4A2C184134DA00A7C044 /* SMThirdViewController.m */; };
@@ -32,7 +31,25 @@
 		307C4A3818414AFF00A7C044 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C4A3618414AFE00A7C044 /* settings.png */; };
 		307C4A3918414AFF00A7C044 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307C4A3718414AFE00A7C044 /* settings@2x.png */; };
 		307C4A3F18414CDA00A7C044 /* SMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C4A3E18414CD900A7C044 /* SMSettingsViewController.m */; };
+		30A7A81C1992B26F00041066 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A7A81B1992B26F00041066 /* KeyboardViewController.m */; };
+		30A7A8271992B30E00041066 /* DemoAppKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */; };
+		30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
+		30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A271841315A00A7C044 /* AudioToolbox.framework */; };
+		30C455FA19A161A100079F58 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		30A7A8251992B26F00041066 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		307C49F118412EC200A7C044 /* TextExpanderDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextExpanderDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +85,12 @@
 		307C4A3718414AFE00A7C044 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		307C4A3D18414CD900A7C044 /* SMSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSettingsViewController.h; sourceTree = "<group>"; };
 		307C4A3E18414CD900A7C044 /* SMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSettingsViewController.m; sourceTree = "<group>"; };
+		30A7A8161992B26F00041066 /* DemoAppKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DemoAppKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A7A8191992B26F00041066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30A7A81A1992B26F00041066 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
+		30A7A81B1992B26F00041066 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
+		30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoAppKeyboard.xib; sourceTree = "<group>"; };
+		30A7A82A1992B62800041066 /* DemoAppKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DemoAppKeyboard.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +100,19 @@
 			files = (
 				307C4A2A1841316800A7C044 /* CoreText.framework in Frameworks */,
 				307C4A281841315A00A7C044 /* AudioToolbox.framework in Frameworks */,
-				307C4A261841314D00A7C044 /* TextExpander.framework in Frameworks */,
 				307C49F518412EC200A7C044 /* UIKit.framework in Frameworks */,
 				307C49F718412EC200A7C044 /* Foundation.framework in Frameworks */,
 				307C49F918412EC200A7C044 /* CoreGraphics.framework in Frameworks */,
+				30C455FA19A161A100079F58 /* TextExpander.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30A7A8131992B26F00041066 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */,
+				30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				307C49FA18412EC200A7C044 /* TextExpanderDemoApp */,
+				30A7A8171992B26F00041066 /* DemoAppKeyboard */,
 				307C49F318412EC200A7C044 /* Frameworks */,
 				307C49F218412EC200A7C044 /* Products */,
 			);
@@ -100,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				307C49F118412EC200A7C044 /* TextExpanderDemoApp.app */,
+				30A7A8161992B26F00041066 /* DemoAppKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +192,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		30A7A8171992B26F00041066 /* DemoAppKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				30A7A82A1992B62800041066 /* DemoAppKeyboard.entitlements */,
+				30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */,
+				30A7A81A1992B26F00041066 /* KeyboardViewController.h */,
+				30A7A81B1992B26F00041066 /* KeyboardViewController.m */,
+				30A7A8181992B26F00041066 /* Supporting Files */,
+			);
+			path = DemoAppKeyboard;
+			sourceTree = "<group>";
+		};
+		30A7A8181992B26F00041066 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30A7A8191992B26F00041066 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,6 +222,7 @@
 				307C49ED18412EC200A7C044 /* Sources */,
 				307C49EE18412EC200A7C044 /* Frameworks */,
 				307C49EF18412EC200A7C044 /* Resources */,
+				30A7A8251992B26F00041066 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -178,6 +233,23 @@
 			productReference = 307C49F118412EC200A7C044 /* TextExpanderDemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		30A7A8151992B26F00041066 /* DemoAppKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A7A8221992B26F00041066 /* Build configuration list for PBXNativeTarget "DemoAppKeyboard" */;
+			buildPhases = (
+				30A7A8121992B26F00041066 /* Sources */,
+				30A7A8131992B26F00041066 /* Frameworks */,
+				30A7A8141992B26F00041066 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DemoAppKeyboard;
+			productName = DemoAppKeyboard;
+			productReference = 30A7A8161992B26F00041066 /* DemoAppKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,6 +259,25 @@
 				CLASSPREFIX = SM;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Greg Scown";
+				TargetAttributes = {
+					307C49F018412EC200A7C044 = {
+						DevelopmentTeam = 7PKJ6G4DXL;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					30A7A8151992B26F00041066 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 7PKJ6G4DXL;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 307C49EC18412EC200A7C044 /* Build configuration list for PBXProject "TextExpanderDemoApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -201,6 +292,7 @@
 			projectRoot = "";
 			targets = (
 				307C49F018412EC200A7C044 /* TextExpanderDemoApp */,
+				30A7A8151992B26F00041066 /* DemoAppKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -226,6 +318,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30A7A8141992B26F00041066 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A7A8271992B30E00041066 /* DemoAppKeyboard.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,6 +339,14 @@
 				307C4A1B18412EC200A7C044 /* SMSecondViewController.m in Sources */,
 				307C4A2D184134DA00A7C044 /* SMThirdViewController.m in Sources */,
 				307C4A3F18414CDA00A7C044 /* SMSettingsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30A7A8121992B26F00041066 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A7A81C1992B26F00041066 /* KeyboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +384,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -307,6 +416,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -324,16 +434,15 @@
 		307C4A2318412EC200A7C044 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Greg Scown (R7N96KFQ76)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextExpanderDemoApp/TextExpanderDemoApp-Prefix.pch";
 				INFOPLIST_FILE = "TextExpanderDemoApp/TextExpanderDemoApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D7280C86-A68F-46A7-9C94-10E5A0877241";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -342,18 +451,85 @@
 		307C4A2418412EC200A7C044 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Greg Scown (R7N96KFQ76)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextExpanderDemoApp/TextExpanderDemoApp-Prefix.pch";
 				INFOPLIST_FILE = "TextExpanderDemoApp/TextExpanderDemoApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D7280C86-A68F-46A7-9C94-10E5A0877241";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		30A7A8231992B26F00041066 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = DemoAppKeyboard/DemoAppKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = DemoAppKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		30A7A8241992B26F00041066 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = DemoAppKeyboard/DemoAppKeyboard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = DemoAppKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -374,6 +550,15 @@
 			buildConfigurations = (
 				307C4A2318412EC200A7C044 /* Debug */,
 				307C4A2418412EC200A7C044 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30A7A8221992B26F00041066 /* Build configuration list for PBXNativeTarget "DemoAppKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A7A8231992B26F00041066 /* Debug */,
+				30A7A8241992B26F00041066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

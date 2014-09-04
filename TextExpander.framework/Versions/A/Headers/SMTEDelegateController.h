@@ -154,6 +154,18 @@
  */
 + (void)setExpansionEnabled:(BOOL)expansionEnabled;
 
+/**
+ * Determine if expansion is currently enabled or disabled.
+ */
++ (BOOL)expansionEnabled;
+
+/**
+ * Turn expansion off or on for the TextExpander custom keyboard.
+ * Applies only if custom keyboard is active and your application is in the foreground.
+ *
+ * @param New snippet abbreviation expansion setting
+ */
++ (void)setCustomKeyboardExpansionEnabled:(BOOL)expansionEnabled NS_AVAILABLE_IOS(8_0);
 
 /**
  * On iOS 7, if your app has at some point fetched shared snippet data, then it will reside
@@ -176,10 +188,11 @@
 - (void)resetKeyLog;
 
 /*
+ * Deprecated on iOS 7.
  * When your app becomes the active app, it means TEtouch may have been active, where the user might have
  * edited snippets, etc. On iOS 5 and 6, this checks to see if snippets have been updated.
  */
-- (void)willEnterForeground;
+- (void)willEnterForeground NS_DEPRECATED_IOS(3_0, 7_0);
 
 /*
  * Tells if TextExpander 2.3 or above is installed, which means TextExpander can respond to
@@ -204,6 +217,13 @@
  * then your openURL handler should call the SDK's handleGetSnippetsURL: with the url, and return the value it returns.
  */
 @property (nonatomic, retain) NSString *getSnippetsScheme;
+
+/*
+ * Your app or extension's Application Group Identifier. If set, TextExpander will store and retrieve its snippet data
+ * from [NSFileManager containerURLForSecurityApplicationGroupIdentifier:appGroupIdentifier] with a path component of
+ * Library/Application Support/TextExpander
+*/
+@property (nonatomic, retain) NSString *appGroupIdentifier;
 
 /*
  * Attempts to fetch/update shared snippets and settings from the TextExpander app.
@@ -249,6 +269,12 @@
  * @return the string with any abbreviations expanded
  */
 - (NSString*)stringByExpandingAbbreviations:(NSString*)inString;
+
+typedef NS_OPTIONS(NSUInteger, SMTEExpansionOptions) {
+    SMTEExpansionOptionIgnoreCase = 1
+};
+
+- (NSString*)stringByExpandingAbbreviations:(NSString*)inString cursorPosition:(NSUInteger*)cursorPosition options:(SMTEExpansionOptions)expansionOptions;
 
 /**
  * Works just like stringByExpandingAbbreviations, but with attributed strings. Plain text snippets

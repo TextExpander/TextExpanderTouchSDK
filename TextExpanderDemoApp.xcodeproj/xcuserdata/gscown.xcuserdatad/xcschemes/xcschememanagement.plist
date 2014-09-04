@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DemoAppKeyboard.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>TextExpanderDemoApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>307C49F018412EC200A7C044</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30A7A8151992B26F00041066</key>
 		<dict>
 			<key>primary</key>
 			<true/>

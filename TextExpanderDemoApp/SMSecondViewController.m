@@ -22,6 +22,7 @@
     self.textExpander.clientAppName = @"TextExpanderDemoApp";
     self.textExpander.fillCompletionScheme = @"textexpanderdemoapp-fill-xc";
     self.textExpander.fillDelegate = self;
+    self.textExpander.appGroupIdentifier = @"group.com.smileonmymac.textexpander.demoapp"; // !!! You must change this
     
     self.webView.delegate = self.textExpander;
     self.textExpander.nextDelegate = self;

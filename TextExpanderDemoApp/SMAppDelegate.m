@@ -8,6 +8,9 @@
 
 #import "SMAppDelegate.h"
 #import <TextExpander/SMTEDelegateController.h>
+#import <notify.h>
+
+static int SMAppDelegateCustomKeyboardWillAppearToken = 0;
 
 @implementation SMAppDelegate
 
@@ -50,6 +53,16 @@ NSString *SMTEExpansionEnabled = @"SMTEExpansionEnabled";
 {
     BOOL textExpanderEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:SMTEExpansionEnabled];
     [SMTEDelegateController setExpansionEnabled:textExpanderEnabled];
+    
+    // Disable expansion by the custom keyboard, as we implement the SDK and so can do more
+    // than the custom keyboard (i.e. work with system keyboards, support rich text, support
+    // robust x-callback-url UI for fill-ins
+    notify_register_dispatch("com.smileonmymac.tetouch.keyboard.viewWillAppear",
+                             &SMAppDelegateCustomKeyboardWillAppearToken,
+                             dispatch_get_main_queue(), ^(int t) {
+                                 [SMTEDelegateController setCustomKeyboardExpansionEnabled:NO];
+                             });
+    
     return YES;
 }
 							
