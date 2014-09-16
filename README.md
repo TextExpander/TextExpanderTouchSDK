@@ -301,6 +301,10 @@ Thank you,
 
 ### Release Notes
 
+**3.0.1 (2014-09-16)**
+- Fixes potential crash when abbreviation is entered in a UITextField via marked text (e.g. Japanese input method)
+- Fixes case where additional characters can remain after abbreviation is expanded in UITextView when abbreviation is expanded via marked text
+
 **3.0 (2014-09-04)**
 - Adds support for disabling expansion via the TextExpander 3 custom keyboard to avoid conflicts with SDK-implementing apps
 - Adds support for storing and retrieving snippets from an app group to support custom keyboards and extensions
