@@ -301,6 +301,9 @@ Thank you,
 
 ### Release Notes
 
+**3.0.2 (2014-09-18)**
+- Release build (versus 3.0.1 which was inadvertently done as a debug build)
+
 **3.0.1 (2014-09-16)**
 - Fixes potential crash when abbreviation is entered in a UITextField via marked text (e.g. Japanese input method)
 - Fixes case where additional characters can remain after abbreviation is expanded in UITextView when abbreviation is expanded via marked text
