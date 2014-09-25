@@ -301,6 +301,9 @@ Thank you,
 
 ### Release Notes
 
+**3.0.3 (2014-09-25)**
+- Fixes potential crash when abbreviation is entered in a UITextField on iOS 8 with undo support enabled
+
 **3.0.2 (2014-09-18)**
 - Release build (versus 3.0.1 which was inadvertently done as a debug build)
 
