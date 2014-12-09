@@ -301,6 +301,11 @@ Thank you,
 
 ### Release Notes
 
+**3.0.5 (2014-12-09)**
+
+- Resolves offset problems without re-introducing problems with marked text
+- Updates Simulator package to match TextExpander 3.2.2 (waiting for review)
+
 **3.0.4 (2014-10-29)**
 
 - Fixes potential offset problem when expanding plain text snippet into an attributed text object
