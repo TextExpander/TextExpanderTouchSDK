@@ -130,11 +130,11 @@ Note: Snippet changes made in TextExpander touch are not automatically available
 
 To acquire / update snippet data, your app needs to:
 
-1. Provide a URL scheme for getting snippets via x-callback-url:
-    a. Set the getSnippetsScheme property of the SMTEDelegateController 
-    b. Add the scheme to your app's Info in Xcode under "URL Types"
-    c. Implement application:openURL:sourceApplication:annotation: or application:handleOpenURL: in your app delegate, and call [SMTEDelegateController handleGetSnippetsURL:error:cancelFlag:] with any URL's that have that scheme (or which meet the criteria as described in the note below)
-    d. If cancelFlag is returned as true, the user has Share Snippets turned off in TextExpander and did not permit sharing temporarily when prompted. If error is not nil, an error occurred, and you should probably inform the user.
+1. Provide a URL scheme for getting snippets via x-callback-url:  
+    1. Set the getSnippetsScheme property of the SMTEDelegateController  
+    2. Add the scheme to your app's Info in Xcode under "URL Types"  
+    3. Implement application:openURL:sourceApplication:annotation: or application:handleOpenURL: in your app delegate, and call [SMTEDelegateController handleGetSnippetsURL:error:cancelFlag:] with any URL's that have that scheme (or which meet the criteria as described in the note below)  
+    4. If cancelFlag is returned as true, the user has Share Snippets turned off in TextExpander and did not permit sharing temporarily when prompted. If error is not nil, an error occurred, and you should probably inform the user.  
 2. Add a user interface element to your app which, when touched, initiates acquisition / updating of snippet data by calling - [SMTEDelegateController getSnippets]
 3. Set the clientAppName property of the SMTEDelegateController, which is used to display the name of your app in the TextExpander app, as might be the case when Share Snippets is turned off to identify which app is requesting snippet data and offering the user a choice to turn Share Snippets on or to cancel.
 
