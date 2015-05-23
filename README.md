@@ -1,7 +1,7 @@
 # TextExpander touch SDK
 (Release notes are found at the bottom of this document.)
 
-[Smile](http://smilesoftware.com/) provides the TextExpander framework to include TextExpander functionality in your iOS app, custom keyboard, or extension, subject to the License Agreement below.
+[Smile](http://smilesoftware.com/) provides the TextExpander framework so that you can include TextExpander functionality in your iOS app, custom keyboard, or extension, subject to the License Agreement below.
 
 [TextExpander touch SDK home page](http://smilesoftware.com/sdk)
 
@@ -50,6 +50,7 @@ Note: To dismiss the keyboard, tap the whitespace to the left or right of the te
 - CoreGraphics.framework
 - CoreText.framework
 - Foundation.framework
+- JavaScriptCore.framework
 - UIKit.framework
 
 ## Add TextExpander to Your View
@@ -68,7 +69,7 @@ TextExpander works with these views:
 
 TextExpander 3.0 will ship with a custom keyboard, which can expand TextExpander abbreviations when typed.
 
-Custom keyboards do not support rich text, and their UI is more limited than the x-callback-url for fill-ins.
+Custom keyboards do not support rich text, and their UI is limited such that they cannot support fill-ins.
 
 If your app implements the SDK, you'll want to disable TextExpander custom keyboard expansion for the best user experience.
 
@@ -117,8 +118,8 @@ The TextExpanderDemoApp includes a custom keyboard target, which serves as an ex
 - Create another App ID for the keyboard (e.g. com.smileonmymac.TextExpanderDemoApp.DemoAppKeyboard)
 - Edit the App ID to add the App Group
 - Create a Provisioning Profile for development, download it, and drag it to Xcode
-4. Select the TextExpanderDemoApp target, and in its Capbilities tab, turn your App Group on, and check the appropriate Group
-5. Select the DemoAppKeyboard target, and in its Capbilities tab, turn your App Group on, and check the appropriate Group
+4. Select the TextExpanderDemoApp target, and in its Capabilities tab, turn your App Group on, and check the appropriate Group
+5. Select the DemoAppKeyboard target, and in its Capabilities tab, turn your App Group on, and check the appropriate Group
 6. Select the TextExpanderDemoApp target, and in its Build Phases tab, add the DemoAppKeyboard to Embed App Extensions
 7. Change the appGroupIdentifier setting in SMFirstViewController, SMSecondViewController, SMThirdViewController, and KeyboardViewController to match yours (search and replace @"group.com.smileonmymac.textexpander.demoapp")
 8. Run the demo app, and update its snippets (so that they get written to the app group container)
@@ -131,22 +132,27 @@ Note: Snippet changes made in TextExpander touch are not automatically available
 To acquire / update snippet data, your app needs to:
 
 1. Provide a URL scheme for getting snippets via x-callback-url:
-    a. Set the getSnippetsScheme property of the SMTEDelegateController 
-    b. Add the scheme to your app's Info in Xcode under "URL Types"
-    c. Implement application:openURL:sourceApplication:annotation: or application:handleOpenURL: in your app delegate, and call [SMTEDelegateController handleGetSnippetsURL:error:cancelFlag:] with any URL's that have that scheme (or which meet the criteria as described in the note below)
-    d. If cancelFlag is returned as true, the user has Share Snippets turned off in TextExpander and did not permit sharing temporarily when prompted. If error is not nil, an error occurred, and you should probably inform the user.
-2. Add a user interface element to your app which, when touched, initiates acquisition / updating of snippet data by calling - [SMTEDelegateController getSnippets]
-3. Set the clientAppName property of the SMTEDelegateController, which is used to display the name of your app in the TextExpander app, as might be the case when Share Snippets is turned off to identify which app is requesting snippet data and offering the user a choice to turn Share Snippets on or to cancel.
 
+   - Set the `getSnippetsScheme` property of the SMTEDelegateController 
+    - Add the scheme to your app's Info in Xcode under "URL Types"
+    - Implement `application:openURL:sourceApplication:annotation:` or `application:handleOpenURL:` in your app delegate, and call `[SMTEDelegateController handleGetSnippetsURL:error:cancelFlag:]` with any URL's that have that scheme (or which meet the criteria as described in the note below)
+    - If `cancelFlag` is returned as true, the user has Share Snippets turned off in TextExpander and did not permit sharing temporarily when prompted. If error is not nil, an error occurred, and you should probably inform the user.
+
+2. Add a user interface element to your app which, when touched, initiates acquisition / updating of snippet data by calling `- [SMTEDelegateController getSnippets]`
+3. Set the `clientAppName` property of the SMTEDelegateController, which is used to display the name of your app in the TextExpander app, as might be the case when Share Snippets is turned off to identify which app is requesting snippet data and offering the user a choice to turn Share Snippets on or to cancel.
+
+Example setup: <pre>self.textExpander = [[SMTEDelegateController alloc] init];<br>[self.textView setDelegate:self.textExpander];  // required for expansion<br>[self.textExpander setNextDelegate:self]; // if you still want to receive iOS delegate messages
+self.textExpander.getSnippetsScheme = @"supertyper-xc"; // your URL scheme
+self.textExpander.clientAppName = @"SuperTyper"; // your app's name </pre>
 Note that you can use an existing URL scheme as your getSnippetsScheme if you want to. The callback URLs will look like these:
 
 - getSnippetsScheme://x-callback-url/TextExpanderSettings*[more…]*
 
-So you can easily examine the URL for the presence of x-callback-url in the URL host and /TextExpander as the prefix of the URL path to determine whether or not a given URL is a snippet data callback to your URL scheme.
+To differentiate from other URL calls your app receives, examine the URL for the presence of x-callback-url in the URL host and /TextExpander as the prefix of the URL path to determine whether or not a given URL is a snippet data callback to your URL scheme.
 
-To provide users information about the current status of TextExpander data, you can use `expansionStatusForceLoad:snippetCount:loadDate:error:` to obtain the last-obtained snippet settings'  modification date, or find that no snippet settings have yet been fetched.
+To provide users information about the current status of TextExpander data, you can use `expansionStatusForceLoad:snippetCount:loadDate:error:` to obtain the last-fetched snippet settings'  modification date, or find that no snippet settings have yet been fetched.
 
-Please note that it is possible, though unlikely, that your app will be unloaded when TextExpander touch is launched. You may find that you will need code before or after you call [SMTEDelegateController handleGetSnippetsURL:] to check your app's state and to restore it if necessary.
+Please note that it is possible, though unlikely, that your app will be unloaded when TextExpander touch is launched. You may find that you will need code before or after you call `[SMTEDelegateController handleGetSnippetsURL:]` to check your app's state and to restore it if necessary.
 
 ### Usage Notes
 
@@ -192,12 +198,18 @@ The fill-in process involves the use of x-callback URLs (thanks Greg Pierce of A
 To support fill-in snippets, your app needs to:
 
 1. Provide a URL scheme for fill-in snippet completion via x-callback-url. (Leaving this nil will avoid the fill-in process, %fill% macros in the snippet will be replaced with (field name).)
-    1. Set the fillCompletionScheme property of the SMTEDelegateController 
+    1. Set the `fillCompletionScheme` property of the SMTEDelegateController (probably the same as the `getSnippetsScheme`)
     2. Add the scheme to your app's Info in Xcode under "URL Types" (if not using an existing URL scheme -- see note below)
-    3. Implement application:openURL:sourceApplication:annotation: or application:handleOpenURL: in your app delegate, and call the SMTEDelegateController's handleFillCompletionURL: with any URL's that have that scheme (or which meet the criteria as described in the note below)
-2. Implement the SMTEFillDelegate protocol to allow the SDK to return first responder status to the correct text item to insert a completed fill-in snippet.
-    1. Set the fillDelegate property of the SMTEDelegateController with your SMTEFillDelegate implementing object
-	2. Set the fillForAppName property of the SMTEDelegateController with your app's name (eg. "SuperTyper"). This will appear in the fill-in view's title, something like "SuperTyper fill-in: [fill abrv]"
+    3. Implement `application:openURL:sourceApplication:annotation:` or `application:handleOpenURL:` in your app delegate, and call the SMTEDelegateController's `handleFillCompletionURL:` with any URL's that have that scheme (or which meet the criteria as described in the note below)
+2. Implement the SMTEFillDelegate protocol to allow the SDK to return first responder status to the correct text item to insert a completed fill-in snippet by setting the fillDelegate property of the SMTEDelegateController with your SMTEFillDelegate implementing object
+
+Continuing the example setup: <pre>self.textExpander = [[SMTEDelegateController alloc] init];
+[self.textView setDelegate:self.textExpander];  // required for expansion
+[self.textExpander setNextDelegate:self]; // if you still want to receive iOS delegate messages
+self.textExpander.getSnippetsScheme = @"supertyper-xc"; // required to fetch snippets
+self.textExpander.clientAppName = @"SuperTyper"; // required to fetch snippets
+self.textExpander.fillCompletionScheme = @"supertyper-xc"; // to handle fill-in callback
+</pre>
 
 Note that you can use an existing URL scheme as your fillCompletionScheme if you want to. The callback URLs will look like these:
 
@@ -300,6 +312,11 @@ Thank you,
 
 
 ### Release Notes
+
+**3.5 (2015-05-23)**
+
+- Snippets can now execute JavaScript, so JavaScriptCore.framework must be linked
+- Library should emit fewer log messages, especially in cases where user never fetches snippets
 
 **3.0.5 (2014-12-09)**
 

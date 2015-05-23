@@ -3,7 +3,7 @@
 //  teiphone
 //
 //  Created by Greg Scown on 8/24/09.
-//  Copyright 2009-2013 SmileOnMyMac. All rights reserved.
+//  Copyright 2009-2015 SmileOnMyMac. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -102,13 +102,15 @@
 @property (nonatomic, retain) NSString *fillCompletionScheme;
 @property (nonatomic, assign) NSObject<SMTEFillDelegate> *fillDelegate;
 
+@property (nonatomic, readonly) BOOL loaded;	// snippets and groups are loaded
+@property (nonatomic, readonly) BOOL triedLoad;	// tried to load settings ("loaded" tells if succeeded)
+												// reset/try again with getSnippets or willEnterForeground
+
 + (BOOL)isTextExpanderTouchInstalled;		// is any version of TEt installed?
 + (BOOL)textExpanderTouchSupportsFillins;	// essentially, is TEt 2.0 or higher installed?
 
 /**
- * On iOS 6, returns YES if the shared UIPasteboard is available.
- * On iOS 7, returns YES only if your app has already fetched shared snippet data and it
- * still resides in a persistent UIPasteboard.
+ * Returns YES only if your app has already fetched shared snippet data.
  *
  * @param optionalModDate can return the modification date of the found settings, or nil
  *
@@ -120,23 +122,21 @@
  * Tells whether snippet expansion is possible with current state of shared/fetched settings.
  *
  * That is, returns YES if snippets have either already been loaded, or if there is
- * non-zero-length data on the persistent UIPasteboard where shared snippets from a
- * previous fetch (iOS 7) or from Share Snippets in TEtouch (iOS 6).
+ * non-zero-length data in the Library/Application Support/TextExpander folder where shared snippets from a
+ * previous fetch (iOS 7).
  *
- * @param loadIfNotLoaded attempt to load snippets and settings if not yet loaded, or
- * if the shared UIPasteboard date does not match date of loaded snippets (date mismatch
- * only applies if pre-iOS 7 and your app did not call willEnterForeground)
- * Note: If set and not yet loaded, this will load the snippets synchronously on the current
+ * @param loadIfNotLoaded attempt to load snippets and settings from existing file if not yet loaded
+ * Note: If YES and file has not yet been loaded, this will load the snippets synchronously on the current
  * dispatch queue. You can call this off of the main queue to avoid blocking if the user
  * has a large snippet collection.
- * Because loading may fail, this might return YES if loadIfNotLoaded is NO, then later
- * return NO if loading failed.
+ * Because loading may fail, this might return YES if loadIfNotLoaded is NO (because a bad settings file
+ * somehow exists), then later return NO if loading from the file failed.
  *
  * @param optionalCount can return the number of _loaded_ snippets (can be zero with a
- * YES return value if the snippet pasteboard data has not been read in yet)
+ * YES return value if the snippet data has not been read in yet)
  *
- * @param optionalLoadedDate can return the modification date of the pasteboard data, or nil if no
- * pasteboard data is found
+ * @param optionalLoadedDate can return the modification date of the settings file, or nil if no
+ * file is present
  *
  * @param optionalLoadError can return snippet load error if load has been attempted and failed
  *
@@ -144,8 +144,8 @@
  */
 + (BOOL)expansionStatusForceLoad: (BOOL)loadIfNotLoaded
 					snippetCount: (NSUInteger*)optionalCount
-						loadDate: (NSDate**)optionalLoadedDate
-						   error: (NSError**)optionalLoadError;
+						loadDate: (NSDate* __autoreleasing *)optionalLoadedDate
+						   error: (NSError* __autoreleasing *)optionalLoadError;
 
 /**
  * Turn expansion off or on.
@@ -168,15 +168,10 @@
 + (void)setCustomKeyboardExpansionEnabled:(BOOL)expansionEnabled NS_AVAILABLE_IOS(8_0);
 
 /**
- * On iOS 7, if your app has at some point fetched shared snippet data, then it will reside
- * in a persistent named UIPasteboard, with your team ID invisibly pre-fixed to the name.
+ * If your app has at some point fetched shared snippet data, then it will reside
+ * in your app's file system "sandbox" in the Library/Application Support/TextExpander folder.
  *
- * If the user turns off TextExpander support in your app, you can call this method to clear
- * that UIPasteboard so your app/team will no longer be using any persistent storage for snippet data.
- * Note that because of the team ID, this will also apply to any of your other apps as well, so
- * use with caution.
- *
- * In iOS 5 and 6 this method just clears any loaded-in-memory snippet settings.
+ * If the user turns off TextExpander support in your app, you can call this method to delete that file.
  */
 + (void)clearSharedSnippets;
 

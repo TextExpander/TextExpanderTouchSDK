@@ -36,6 +36,7 @@
 		30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
 		30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A271841315A00A7C044 /* AudioToolbox.framework */; };
 		30C455FA19A161A100079F58 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
+		30F117621B110658004F3737 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F117611B110658004F3737 /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +92,7 @@
 		30A7A81B1992B26F00041066 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
 		30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoAppKeyboard.xib; sourceTree = "<group>"; };
 		30A7A82A1992B62800041066 /* DemoAppKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DemoAppKeyboard.entitlements; sourceTree = "<group>"; };
+		30F117611B110658004F3737 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F117621B110658004F3737 /* JavaScriptCore.framework in Frameworks */,
 				307C4A2A1841316800A7C044 /* CoreText.framework in Frameworks */,
 				307C4A281841315A00A7C044 /* AudioToolbox.framework in Frameworks */,
 				307C49F518412EC200A7C044 /* UIKit.framework in Frameworks */,
@@ -141,6 +144,7 @@
 		307C49F318412EC200A7C044 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30F117611B110658004F3737 /* JavaScriptCore.framework */,
 				307C4A271841315A00A7C044 /* AudioToolbox.framework */,
 				307C49F818412EC200A7C044 /* CoreGraphics.framework */,
 				307C4A291841316800A7C044 /* CoreText.framework */,
