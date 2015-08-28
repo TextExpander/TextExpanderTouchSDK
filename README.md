@@ -316,6 +316,7 @@ Thank you,
 **3.5.3 (2015-08-28)**
 
 - Updates call which can hang on initialization to use call which does not
+- Adds tetouch, tetouch-xc, and tetouch-settings to LSApplicationQueriesSchemes of demo app
 
 **3.5 (2015-05-23)**
 
