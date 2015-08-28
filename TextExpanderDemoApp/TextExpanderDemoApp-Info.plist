@@ -78,5 +78,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tetouch</string>
+		<string>tetouch-xc</string>
+		<string>tetouch-settings</string>
+	</array>
 </dict>
 </plist>

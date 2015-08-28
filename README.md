@@ -313,6 +313,10 @@ Thank you,
 
 ### Release Notes
 
+**3.5.3 (2015-08-28)**
+
+- Updates call which can hang on initialization to use call which does not
+
 **3.5 (2015-05-23)**
 
 - Snippets can now execute JavaScript, so JavaScriptCore.framework must be linked
