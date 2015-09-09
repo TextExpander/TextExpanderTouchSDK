@@ -313,6 +313,12 @@ Thank you,
 
 ### Release Notes
 
+**3.5.4 (2015-09-09)**
+
+- Built with Xcode 7 GM, includes Bitcode
+- Also ships with TextExpander.framework.fat, which includes x86 architectures for the Simulator
+- IMPORTANT! You MUST add tetouch, tetouch-xc, and tetouch-settings to LSApplicationQueriesSchemes in the Info.plist of your app for the SDK to report whether or not TextExpander is present and to be able to update snippets
+
 **3.5.3 (2015-08-28)**
 
 - Updates call which can hang on initialization to use call which does not
