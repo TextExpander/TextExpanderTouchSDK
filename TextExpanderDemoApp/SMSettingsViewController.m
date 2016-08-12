@@ -152,7 +152,7 @@ typedef enum {
         } else {
             // Note: This only works on the device, not in the Simulator, as the Simulator does
             // not include the App Store app
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes"]];
         }
         self.textExpanderUpdateCell.selected = NO;
     }

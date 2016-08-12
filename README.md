@@ -1,15 +1,15 @@
 # TextExpander touch SDK
 (Release notes are found at the bottom of this document.)
 
-[Smile](http://smilesoftware.com/) provides the TextExpander framework so that you can include TextExpander functionality in your iOS app, custom keyboard, or extension, subject to the License Agreement below.
+[Smile](https://smilesoftware.com/) provides the TextExpander framework so that you can include TextExpander functionality in your iOS app, custom keyboard, or extension, subject to the License Agreement below.
 
-[TextExpander touch SDK home page](http://smilesoftware.com/sdk)
+[TextExpander touch SDK home page](https://smilesoftware.com/sdk)
 
-[TextExpander touch home page](http://smilesoftware.com/TextExpander/touch/index.html)
+[TextExpander touch home page](https://smilesoftware.com/TextExpander/touch/index.html)
 
 [Fill-ins tutorial](http://smile.clarify-it.com/d/ehf7a4)
 
-[Google Group tetouch-sdk (for announcements)](http://groups.google.com/group/tetouch-sdk)
+[Google Group tetouch-sdk (for announcements)](https://groups.google.com/group/tetouch-sdk)
 
 The TextExpanderDemoApp project is a working example app demonstrating how to add TextExpander functionality to your app and custom keyboard.
 
@@ -27,9 +27,9 @@ The TextExpanderDemoApp project is a working example app demonstrating how to ad
 
 TextExpanderDemoApp is an iPhone app, which demonstrates acquiring / updating snippet data via its Settings view, usage of TextExpander in UITextField, UITextView, UISearchBar, UIWebView, and a custom keyboard. It includes a regular web view and a content editable web view. It's not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily in your app. 
 
-1. [Download](http://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes) TextExpander from the App Store
+1. [Download](https://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes) TextExpander from the App Store
 2. Open the TextExpanderTouchSDK folder from step 1
-3. Double-click TextExpanderDemoApp.xcodeproj to open the sample project in Xcode
+3. Double-click TextExpanderDemoApp.xcodeproj or TextExpanderDemoAppSwift.xcodeproj to open the sample project in Xcode
 4. Choose Product -> Run to run the sample
 5. Tap Settings
 6. Turn on "Use TextExpander"
@@ -61,13 +61,19 @@ TextExpander works with these views:
 - UISearchBar
 - UIWebView
 
+Objective-C:
 1. Import the TextExpander header into your view controller's header:<pre>#import "SMTEDelegateController.h"</pre>
-2. Add an SMTEDelegateController to your view controller's subclass:<pre>@property (nonatomic, strong) SMTEDelegateController *textExpander;</pre>
+2. Add an SMTEDelegateController to your view controller:<pre>@property (nonatomic, strong) SMTEDelegateController *textExpander;</pre>
 3. In your view controller's viewDidLoad method, initialize SMTEDelegateController and make it the delegate of your view(s):<pre>self.textExpander = [[SMTEDelegateController alloc] init];<br>[self.textView setDelegate:self.textExpander];<br>[self.textExpander setNextDelegate:self];</pre>
 
-## Disabling TextExpander Custom Keyboard Expansions (NEW in 3.0 / iOS 8 Only)
+Swift:
+1. Import the TextExpander module into your view controller class:<pre>import TextExpander</pre>
+2. Add an SMTEDelegateController to your view controller:<pre>var textExpander: SMTEDelegateController?</pre>
+3. In your view controller's viewDidLoad method, initialize SMTEDelegateController and make it a delegate of your view(s):<pre>self.textExpander = SMTEDelegateController(); self.textView!.delegate = self.textExpander</pre>
 
-TextExpander 3.0 will ship with a custom keyboard, which can expand TextExpander abbreviations when typed.
+## Disabling TextExpander Custom Keyboard Expansions
+
+TextExpander 3 and 4 ship with a custom keyboard, which can expand TextExpander abbreviations when typed.
 
 Custom keyboards do not support rich text, and their UI is limited such that they cannot support fill-ins.
 
@@ -85,7 +91,9 @@ To disable TextExpander custom keyboard expansion, you'll add a listener for the
 
 There is also a corresponding "com.smileonmymac.tetouch.keyboard.viewWillDisappear" notification. It is not necessary to register for that to re-enable expansion.
 
-## Add TextExpander to Your Custom Keyboard or Other Extension (NEW in 3.0 / iOS 8 Only)
+If you're writing in Swift, you'll need to do this in Objective-C. Please see SMSwiftWorkarounds.h, SMSwiftWorkarounds.m, and TextExpanderDemoAppSwift-Bridging-Header.h in TextExpanderDemoAppSwift.xcodeproj for an example of how to do this.
+
+## Add TextExpander to Your Custom Keyboard or Other Extension
 
 Your app which contains your extension ("containing app") will have to acquire snippet data from TextExpander (see Acquiring / Updating Snippet Data below).
 
@@ -103,8 +111,6 @@ A custom keyboard won't use views and delegate methods. It will interact with Te
 <pre>[SMTEDelegateController stringByExpandingAbbreviations:stringToExpand cursorPosition:&cursorPosition options:expansionOptions];</pre>
 
 This method extends the previous stringByExpandingAbbreviations: method by returning the index of the cursor in the expanded text when the user expands a snippet with cursor positioning.
-
-As of iOS 8b5, a custom keyboard could not both insert text and position the cursor in a single pass of the runloop. If that gets fixed, you can remove the workaround in the demo keyboard. [<rdar://problem/17895140>](rdar://problem/17895140)
 
 The TextExpanderDemoApp includes a custom keyboard target, which serves as an example of how to support TextExpander in a custom keyboard. To add the custom keyboard to the demo app:
 
@@ -247,13 +253,13 @@ Stay informed about new versions of the TextExpander framework on this announcem
 
 ### License Agreement
 
-The TextExpander framework is Copyright © 2009-2014 SmileOnMyMac, LLC dba Smile, and is supplied "AS IS" and without warranty. SmileOnMyMac, LLC disclaims all warranties, expressed or implied, including, without limitation the warranties of merchantability and of fitness for any purpose. SmileOnMyMac assumes no liability for direct, indirect, incidental, special, exemplary, or consequential damages, which may result from the use of the TextExpander framework, even if advised of the possibility of such damage.
+The TextExpander framework is Copyright © 2009-2016 SmileOnMyMac, LLC dba Smile, and is supplied "AS IS" and without warranty. SmileOnMyMac, LLC disclaims all warranties, expressed or implied, including, without limitation the warranties of merchantability and of fitness for any purpose. SmileOnMyMac assumes no liability for direct, indirect, incidental, special, exemplary, or consequential damages, which may result from the use of the TextExpander framework, even if advised of the possibility of such damage.
 
 Permission is hereby granted to use, copy, and distribute this library, without fee, subject to the following restrictions:
 
 1. The origin of this library must not be misrepresented
 2. Apps which use this library must indicate "Supports TextExpander touch snippet expansion" in their feature set or product description
-3. Apps which use this library must indicate "Contains TextExpander framework, Copyright © 2009-2013 SmileOnMyMac, LLC dba Smile. TextExpander is a registered trademark of Smile" in their about box and the paragraph above in their license agreement. It is acceptable to link to the license agreement text posted on the app developer's website if that is more appropriate for a given app.
+3. Apps which use this library must indicate "Contains TextExpander framework, Copyright © 2009-2016 SmileOnMyMac, LLC dba Smile. TextExpander is a registered trademark of Smile" in their about box and the paragraph above in their license agreement. It is acceptable to link to the license agreement text posted on the app developer's website if that is more appropriate for a given app.
 
 If your app has special needs with respect to the above restrictions, please address them, preferably with specific suggestions, via email to [textexpander-touch@smilesoftware.com](mailto:textexpander-touch@smilesoftware.com). Perhaps we can find a mutually agreeable solution.
 
@@ -312,6 +318,15 @@ Thank you,
 
 
 ### Release Notes
+
+**4.0 (2016-08-12)**
+
+- Updated to handle new HTML snippet type introduced in TextExpander 6 for macOS and TextExpander 4 for iOS
+- Adds Swift demo app:
+	- The Swift demo app is not meant to illustrate Swift best practices; we welcome pull requests to improve it
+	- The only tricky thing we ran into was that expansionStatusForceLoad doesn't return a Bool and throws; see the demo app for how to deal with that
+- TextExpander.framework is now fat and includes Bitcode and i386 and x86_64 architectures for the Simulator
+	- Note: Older linkers strip Bitcode from fat frameworks with i386 or x86_64 architectures; use Xcode 7.3.1 or Xcode 8
 
 **3.5.4 (2015-09-09)**
 
