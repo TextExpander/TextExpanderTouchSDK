@@ -25,12 +25,19 @@ The TextExpanderDemoApp project is a working example app demonstrating how to ad
 
 ## Build the Sample Project
 
-TextExpanderDemoApp is an iPhone app, which demonstrates acquiring / updating snippet data via its Settings view, usage of TextExpander in UITextField, UITextView, UISearchBar, UIWebView, and a custom keyboard. It includes a regular web view and a content editable web view. It's not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily in your app. 
+TextExpanderDemoApp demonstrates the key aspects of integrating TextExpander functionality into your iOS app:
+
+- adding TextExpander to your app's build configuration, and required info settings
+- acquiring and updating snippet data - DemoApp uses its Settings view
+- using the TextExpander delegate in UITextField, UITextView, UISearchBar, and UIWebView, including a regular web view and a content editable web view
+- using TextExpander in a custom keyboard (most apps will not need this).
+
+TextExpanderDemoApp is not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily into your app. 
 
 1. [Download](https://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes) TextExpander from the App Store
 2. Open the TextExpanderTouchSDK folder from step 1
 3. Double-click TextExpanderDemoApp.xcodeproj or TextExpanderDemoAppSwift.xcodeproj to open the sample project in Xcode
-4. Choose Product -> Run to run the sample
+4. Choose Product -> Run to run the sample on your attached device
 5. Tap Settings
 6. Turn on "Use TextExpander"
 7. Tap Fetch Snippets to get the snippets from TextExpander
@@ -42,16 +49,27 @@ Note: To dismiss the keyboard, tap the whitespace to the left or right of the te
 
 1. Drag TextExpander.framework into your project
 2. Select your app's target
-3. Click on "Info"
+3. Click on "Build Phases"
 4. Scroll down to "Linked Frameworks and Libraries"
 5. Drag the TextExpander.framework from your project to that list
 6. Use + to add the following frameworks to your project, if it doesn't already include them:
-- AudioToolbox.framework
-- CoreGraphics.framework
-- CoreText.framework
-- Foundation.framework
-- JavaScriptCore.framework
-- UIKit.framework
+
+
+   -     AudioToolbox.framework
+   -     CoreGraphics.framework
+   -     CoreText.framework
+   -     Foundation.framework
+   -     JavaScriptCore.framework
+   -     UIKit.framework
+
+## Allow querying and opening the TextExpander touch app
+
+As of iOS 9 you must "whitelist" TextExpander URL schemes so that `openURL` and `canOpenURL` can work properly.
+
+1. Select your app's target
+2. Click on "Info"
+3. Add a LSApplicationQueriesSchemes key (if your project does not yet have one) with an Array value
+4. Add three TextExpander URL scheme values to this array: tetouch, tetouch-xc, and tetouch-settings
 
 ## Add TextExpander to Your View
 
