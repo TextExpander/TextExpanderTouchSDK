@@ -7,8 +7,6 @@
 
 [TextExpander touch home page](https://smilesoftware.com/TextExpander/touch/index.html)
 
-[Fill-ins tutorial](http://smile.clarify-it.com/d/ehf7a4)
-
 [Google Group tetouch-sdk (for announcements)](https://groups.google.com/group/tetouch-sdk)
 
 The TextExpanderDemoApp project is a working example app demonstrating how to add TextExpander functionality to your app and custom keyboard.
@@ -32,12 +30,12 @@ TextExpanderDemoApp demonstrates the key aspects of integrating TextExpander fun
 - using the TextExpander delegate in UITextField, UITextView, UISearchBar, and UIWebView, including a regular web view and a content editable web view
 - using TextExpander in a custom keyboard (most apps will not need this).
 
-TextExpanderDemoApp is not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily into your app. 
+TextExpanderDemoApp is not meant to be a model iOS app. It's meant to demonstrate TextExpander functionality so that you can see it in context and adopt it easily into your app.
 
 1. [Download](https://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes) TextExpander from the App Store
 2. Open the TextExpanderTouchSDK folder from step 1
 3. Double-click TextExpanderDemoApp.xcodeproj or TextExpanderDemoAppSwift.xcodeproj to open the sample project in Xcode
-4. Choose Product -> Run to run the sample on your attached device
+4. Choose Product -> Run to run the sample
 5. Tap Settings
 6. Turn on "Use TextExpander"
 7. Tap Fetch Snippets to get the snippets from TextExpander
@@ -49,18 +47,10 @@ Note: To dismiss the keyboard, tap the whitespace to the left or right of the te
 
 1. Drag TextExpander.framework into your project
 2. Select your app's target
-3. Click on "Build Phases"
-4. Scroll down to "Linked Frameworks and Libraries"
+3. Click on "General"
+4. Scroll down to "Frameworks, Libraries, and Embedded Content"
 5. Drag the TextExpander.framework from your project to that list
-6. Use + to add the following frameworks to your project, if it doesn't already include them:
-
-
-   -     AudioToolbox.framework
-   -     CoreGraphics.framework
-   -     CoreText.framework
-   -     Foundation.framework
-   -     JavaScriptCore.framework
-   -     UIKit.framework
+6. Select "Embed & Sign" from the popup to the right of where TextExpander.framework appears in the list
 
 ## Allow querying and opening the TextExpander touch app
 
@@ -258,8 +248,8 @@ The example app includes two different implementations of SMTEFillDelegate, and 
 
 ### Testing Notes
 
-- If you use TextExpander for Mac OS X, you should probably disable it when testing in the iPhone Simulator, especially if you use your own snippets, as your abbreviations in the Simulator may conflict with those on Mac OS X.
-- If you are running in the iOS/iPhone Simulator, you can expand the <UUID>.zip file in the "Simulator" folder on GitHub into your [home]/Library/Developer/CoreSimulator/Devices/<Device UUID>/data/Containers/Bundle/Application folder while the simulator is not running, and then the TEtouch app should appear in your simulator. This allows you to create snippets and test fill-in snippets on the simulator.
+- If you use TextExpander for macOS, you should probably disable it when testing in the iPhone Simulator, especially if you use your own snippets, as your abbreviations in the Simulator may conflict with those on macOS.
+- If you are running in the iOS/iPhone Simulator, you may install the TextExpander app by unzipping the <GUID>.zip file in the Simulator folder then dragging the TextExpander application onto the home screen of your Simulator.
 - You can enable some diagnostic/debug logging in the SDK by calling the handleFillCompletionURL: method with a URL like this: [anyScheme]://x-callback-url/SMTEsetlog?log=[off|on|detailed] The log setting resets to off when your app launches (when the SDK library is loaded).
 - If expansion is enabled, you can type the "virtual" snippet abbreviation "SmileTE.status" to see a summary of what snippets data, if any, has been loaded.
 
@@ -276,8 +266,8 @@ The TextExpander framework is Copyright © 2009-2016 SmileOnMyMac, LLC dba Smile
 Permission is hereby granted to use, copy, and distribute this library, without fee, subject to the following restrictions:
 
 1. The origin of this library must not be misrepresented
-2. Apps which use this library must indicate "Supports TextExpander touch snippet expansion" in their feature set or product description
-3. Apps which use this library must indicate "Contains TextExpander framework, Copyright © 2009-2016 SmileOnMyMac, LLC dba Smile. TextExpander is a registered trademark of Smile" in their about box and the paragraph above in their license agreement. It is acceptable to link to the license agreement text posted on the app developer's website if that is more appropriate for a given app.
+2. Apps which use this library must indicate "Supports TextExpander snippet expansion" in their feature set or product description
+3. Apps which use this library must indicate "Contains TextExpander framework, Copyright © 2009-2019 SmileOnMyMac, LLC dba Smile. TextExpander is a registered trademark" in their about box and the paragraph above in their license agreement. It is acceptable to link to the license agreement text posted on the app developer's website if that is more appropriate for a given app.
 
 If your app has special needs with respect to the above restrictions, please address them, preferably with specific suggestions, via email to [textexpander-touch@smilesoftware.com](mailto:textexpander-touch@smilesoftware.com). Perhaps we can find a mutually agreeable solution.
 
@@ -336,6 +326,22 @@ Thank you,
 
 
 ### Release Notes
+
+**4.5 (2019-11-04)**
+
+- Dynamic framework (previously static)
+- Requires iOS 11.0 or later
+- In your target's General tab, to the right of the TextExpander framework, change "Do Not Embed" to "Embed & Sign"
+- Please be sure to add or append the following to your app's Info.plist:
+```
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tetouch</string>
+		<string>tetouch-xc</string>
+		<string>tetouch-settings</string>
+	</array>
+```
+(if you don't, your app won't be able to enable TextExpander nor get snippets)
 
 **4.0 (2016-08-12)**
 

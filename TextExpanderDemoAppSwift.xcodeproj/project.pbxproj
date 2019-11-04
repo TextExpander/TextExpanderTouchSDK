@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		305E321D236B985600B56978 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F5F1A11D4A5424005B8F7B /* TextExpander.framework */; };
+		305E321E236B985600B56978 /* TextExpander.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30F5F1A11D4A5424005B8F7B /* TextExpander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30F5F16F1D443571005B8F7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F16E1D443571005B8F7B /* AppDelegate.swift */; };
 		30F5F1711D443571005B8F7B /* SMFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F1701D443571005B8F7B /* SMFirstViewController.swift */; };
 		30F5F1731D443571005B8F7B /* SMSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F1721D443571005B8F7B /* SMSecondViewController.swift */; };
@@ -18,8 +20,21 @@
 		30F5F18B1D4578D6005B8F7B /* SMSwiftWorkarounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F18A1D4578D6005B8F7B /* SMSwiftWorkarounds.m */; };
 		30F5F1911D458665005B8F7B /* SMTextExpanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F1901D458665005B8F7B /* SMTextExpanderViewController.swift */; };
 		30F5F1931D458A70005B8F7B /* SMThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F1921D458A70005B8F7B /* SMThirdViewController.swift */; };
-		30F5F1A21D4A5424005B8F7B /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F5F1A11D4A5424005B8F7B /* TextExpander.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		305E321F236B985600B56978 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				305E321E236B985600B56978 /* TextExpander.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		30F5F16B1D443571005B8F7B /* TextExpanderDemoAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextExpanderDemoAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +52,7 @@
 		30F5F18A1D4578D6005B8F7B /* SMSwiftWorkarounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSwiftWorkarounds.m; sourceTree = "<group>"; };
 		30F5F1901D458665005B8F7B /* SMTextExpanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextExpanderViewController.swift; sourceTree = "<group>"; };
 		30F5F1921D458A70005B8F7B /* SMThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMThirdViewController.swift; sourceTree = "<group>"; };
-		30F5F1A11D4A5424005B8F7B /* TextExpander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TextExpander.framework; sourceTree = "<group>"; };
+		30F5F1A11D4A5424005B8F7B /* TextExpander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextExpander.framework; path = ../TextExpander/teTouchSDK/TextExpander.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30F5F1A21D4A5424005B8F7B /* TextExpander.framework in Frameworks */,
+				305E321D236B985600B56978 /* TextExpander.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +115,7 @@
 				30F5F1671D443571005B8F7B /* Sources */,
 				30F5F1681D443571005B8F7B /* Frameworks */,
 				30F5F1691D443571005B8F7B /* Resources */,
+				305E321F236B985600B56978 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,6 +138,7 @@
 				TargetAttributes = {
 					30F5F16A1D443571005B8F7B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7PKJ6G4DXL;
 					};
 				};
 			};
@@ -130,6 +147,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -284,14 +302,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"${SOURCE_ROOT}\"";
+				DEVELOPMENT_TEAM = 7PKJ6G4DXL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"${SOURCE_ROOT}",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = TextExpanderDemoAppSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.TextExpanderDemoAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TextExpanderDemoAppSwift/TextExpanderDemoAppSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -300,13 +323,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"${SOURCE_ROOT}\"";
+				DEVELOPMENT_TEAM = 7PKJ6G4DXL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"${SOURCE_ROOT}",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = TextExpanderDemoAppSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.TextExpanderDemoAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TextExpanderDemoAppSwift/TextExpanderDemoAppSwift-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

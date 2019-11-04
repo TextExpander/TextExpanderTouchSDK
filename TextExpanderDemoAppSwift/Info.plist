@@ -82,5 +82,11 @@
 			</array>
 		</dict>
 	</array>
+	<key>LSApplicationQueriesSchemes - 2</key>
+	<array>
+		<string>tetouch</string>
+		<string>tetouch-xc</string>
+		<string>tetouch-settings</string>
+	</array>
 </dict>
 </plist>

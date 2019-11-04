@@ -2,8 +2,8 @@
 //  main.m
 //  TextExpanderDemoApp
 //
-//  Created by Greg Scown on 11/25/13.
-//  Copyright (c) 2013 SmileOnMyMac. All rights reserved.
+//  Created by Greg Scown on 11/23/13.
+//  Copyright (c) 2013 Greg Scown. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -10,6 +10,7 @@ import UIKit
 import TextExpander
 
 class SMSecondViewController: UIViewController, SMTEFillDelegate, SMTextExpanderViewController {
+    
     @IBOutlet weak var webView: UIWebView!
     var textExpander: SMTEDelegateController?
     
@@ -25,8 +26,8 @@ class SMSecondViewController: UIViewController, SMTEFillDelegate, SMTextExpander
         self.textExpander?.nextDelegate = self
         let url = NSURL(string: "https://smilesoftware.com/static/tetouch/sdkview.html")
         if (url != nil) {
-            let request = NSURLRequest(URL: url!)
-            self.webView.loadRequest(request)
+            let request = NSURLRequest(url: url! as URL)
+            self.webView.loadRequest(request as URLRequest)
         }
     }
 
@@ -51,17 +52,17 @@ class SMSecondViewController: UIViewController, SMTEFillDelegate, SMTextExpander
  * Unless there is only one editable area in your web view, this implies that the returned
  * identifier string needs to include element id/name information. Eg. "webview-field2".
  */
-    func identifierForTextArea(uiTextObject: AnyObject) -> String {
+    func identifier(forTextArea uiTextObject: Any!) -> String! {
         var result: String? = nil
         if (uiTextObject is NSDictionary) {
-            let wv: UIWebView = (uiTextObject[SMTEkWebView] as! UIWebView)
+            let wv: UIWebView = (uiTextObject as! Dictionary<String, Any>)[SMTEkWebView] as! UIWebView
             if self.webView == wv {
                 var fieldInfo: String?
-                fieldInfo = uiTextObject[SMTEkElementID] as? String
+                fieldInfo = (uiTextObject as! Dictionary<String, Any>)[SMTEkElementID] as? String
                 if fieldInfo != nil {
                     result = "webview_ID:\(fieldInfo!)"
                 } else {
-                    fieldInfo = uiTextObject[SMTEkElementName] as? String
+                    fieldInfo = (uiTextObject as! Dictionary<String, Any>)[SMTEkElementName] as? String
                     result = "webview_Name:\(fieldInfo!)"
                 }
                 
@@ -113,34 +114,37 @@ class SMSecondViewController: UIViewController, SMTEFillDelegate, SMTextExpander
  * expect the identified text object to become the first responder.
  */
     
-    func makeIdentifiedTextObjectFirstResponder(textIdentifier: String!, fillWasCanceled userCanceledFill: Bool, cursorPosition ioInsertionPointLocation: UnsafeMutablePointer<Int>) -> AnyObject! {
-        var srchRange: Range? = textIdentifier.rangeOfString("webview_")
+    func makeIdentifiedTextObjectFirstResponder(_ textIdentifier: String!, fillWasCanceled userCanceledFill: Bool, cursorPosition ioInsertionPointLocation: UnsafeMutablePointer<Int>) -> Any! {
+        var srchRange: Range? = textIdentifier.range(of: "webview_")
         if (srchRange != nil) {
             self.webView.becomeFirstResponder()
             // TE should take care of moving focus to the identified field, but we need to build
             // a dictionary to identify the field
-            srchRange = textIdentifier.rangeOfString("webview_ID:")
+            srchRange = textIdentifier.range(of: "webview_ID:")
             if (srchRange != nil) {
-                return [
-                    SMTEkWebView : self.webView,
-                    SMTEkElementID : textIdentifier.substringFromIndex((srchRange?.endIndex)!)
+                let result : [String:Any] = [
+                SMTEkWebView : self.webView,
+                SMTEkElementID :                        textIdentifier![(srchRange!.upperBound)...]
                 ]
+                return result as AnyObject
             }
-            srchRange = textIdentifier.rangeOfString("webview_Name:")
+            srchRange = textIdentifier.range(of: "webview_Name:")
             if (srchRange != nil) {
-                return [
+                let result : [String:Any] = [
                     SMTEkWebView : self.webView,
-                    SMTEkElementName : textIdentifier.substringFromIndex((srchRange?.endIndex)!)
+                    SMTEkElementName :                        textIdentifier![(srchRange!.upperBound)...]
                 ]
+                return result as AnyObject
             }
             return nil
         }
         if ("myWebView" == textIdentifier) {
             self.webView.becomeFirstResponder()
-            return [
+            let result : [String:Any] = [
                 SMTEkWebView : self.webView,
                 SMTEkElementID : "myWebView"
             ]
+            return result as AnyObject
         }
         return nil
     }
@@ -155,7 +159,7 @@ class SMSecondViewController: UIViewController, SMTEFillDelegate, SMTextExpander
     }
     
     func webViewDidFinishLoad(inWebView: UIWebView) {
-        inWebView.stringByEvaluatingJavaScriptFromString("document.body.contentEditable ='true'; document.designMode='on';")!
+        _ = inWebView.stringByEvaluatingJavaScript(from: "document.body.contentEditable ='true'; document.designMode='on';")!
         print("webViewDidFinishLoad")
     }
     

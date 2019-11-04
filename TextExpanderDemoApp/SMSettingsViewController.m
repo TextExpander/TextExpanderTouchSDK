@@ -37,6 +37,7 @@ typedef enum {
 - (void)viewDidAppear:(BOOL)animated {
     [self updateCells];
 	[self.tableView reloadData];
+	[super viewDidAppear: animated];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -138,10 +139,11 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] == SMTESettingsViewUpdateIndex) {
+		BOOL textExpanderIsInstalled = [SMTEDelegateController isTextExpanderTouchInstalled];
 		BOOL useTextExpander = [[NSUserDefaults standardUserDefaults] boolForKey:SMTEExpansionEnabled];
-		if (!useTextExpander)
+		if (!useTextExpander && textExpanderIsInstalled)
 			return;		// ignore taps if expansion is disabled
-        if ([SMTEDelegateController isTextExpanderTouchInstalled]) {
+        if (textExpanderIsInstalled) {
             if (self.textExpander == nil) {
                 // Lazy load of TextExpander
                 self.textExpander = [[SMTEDelegateController alloc] init];
@@ -152,7 +154,7 @@ typedef enum {
         } else {
             // Note: This only works on the device, not in the Simulator, as the Simulator does
             // not include the App Store app
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://smilesoftware.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://textexpander.com/cgi-bin/redirect.pl?product=tetouch&cmd=itunes"]];
         }
         self.textExpanderUpdateCell.selected = NO;
     }

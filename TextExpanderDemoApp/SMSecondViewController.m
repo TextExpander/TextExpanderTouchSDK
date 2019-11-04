@@ -26,7 +26,7 @@
     
     self.webView.delegate = self.textExpander;
     self.textExpander.nextDelegate = self;
-    NSURL *url = [NSURL URLWithString:@"https://smilesoftware.com/static/tetouch/sdkview.html"];
+    NSURL *url = [NSURL URLWithString:@"https://textexpander.com/static/sdk/sdkview.html"];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	[self.webView loadRequest:request];
 }

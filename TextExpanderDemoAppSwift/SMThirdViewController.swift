@@ -25,7 +25,7 @@ class SMThirdViewController: UIViewController, SMTextExpanderViewController, SMT
         self.webView.delegate = self.textExpander
         self.textExpander?.nextDelegate = self
         let html: String = "<body id=\"myWebView\">TE Test<div><br></div><table><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table><div>Before starting with a snippet</div><div><br></div></body>"
-        self.webView.loadHTMLString(html, baseURL: NSURL(string: "/")!)
+        self.webView.loadHTMLString(html, baseURL: NSURL(string: "/")! as URL)
     }
     
 //---------------------------------------------------------------
@@ -49,17 +49,18 @@ class SMThirdViewController: UIViewController, SMTextExpanderViewController, SMT
  * Unless there is only one editable area in your web view, this implies that the returned
  * identifier string needs to include element id/name information. Eg. "webview-field2".
  */
-    func identifierForTextArea(uiTextObject: AnyObject) -> String {
+    func identifier(forTextArea uiTextObject: Any!) -> String! {
         var result: String? = nil
-        if (uiTextObject is NSDictionary) {
-            let wv: UIWebView = (uiTextObject[SMTEkWebView] as! UIWebView)
+        let uiTO = uiTextObject as! [String:Any];
+        if (uiTextObject != nil) {
+            let wv: UIWebView = uiTO[SMTEkWebView] as! UIWebView
             if self.webView == wv {
                 var fieldInfo: String?
-                fieldInfo = uiTextObject[SMTEkElementID] as? String
+                fieldInfo = uiTO[SMTEkElementID] as? String
                 if fieldInfo != nil {
                     result = "webview_ID:\(fieldInfo!)"
                 } else {
-                    fieldInfo = uiTextObject[SMTEkElementName] as? String
+                    fieldInfo = uiTO[SMTEkElementName] as? String
                     result = "webview_Name:\(fieldInfo!)"
                 }
                 
@@ -111,24 +112,26 @@ class SMThirdViewController: UIViewController, SMTextExpanderViewController, SMT
  * expect the identified text object to become the first responder.
  */
     
-    func makeIdentifiedTextObjectFirstResponder(textIdentifier: String!, fillWasCanceled userCanceledFill: Bool, cursorPosition ioInsertionPointLocation: UnsafeMutablePointer<Int>) -> AnyObject! {
-        var srchRange: Range? = textIdentifier.rangeOfString("webview_")
+    func makeIdentifiedTextObjectFirstResponder(_ textIdentifier: String!, fillWasCanceled userCanceledFill: Bool, cursorPosition ioInsertionPointLocation: UnsafeMutablePointer<Int>) -> Any? {
+        var srchRange: Range? = textIdentifier.range(of: "webview_")
         if (srchRange != nil) {
             self.webView.becomeFirstResponder()
             // TE should take care of moving focus to the identified field, but we need to build
             // a dictionary to identify the field
-            srchRange = textIdentifier.rangeOfString("webview_ID:")
+            srchRange = textIdentifier.range(of: "webview_ID:")
             if (srchRange != nil) {
-                return [
+                let result : [String:Any] = [
                     SMTEkWebView : self.webView,
-                    SMTEkElementID : textIdentifier.substringFromIndex((srchRange?.endIndex)!)
+                    SMTEkElementID :                        textIdentifier![(srchRange!.upperBound)...]
                 ]
+                return result;
             }
-            srchRange = textIdentifier.rangeOfString("webview_Name:")
+            srchRange = textIdentifier.range(of: "webview_Name:")
             if (srchRange != nil) {
                 return [
                     SMTEkWebView : self.webView,
-                    SMTEkElementName : textIdentifier.substringFromIndex((srchRange?.endIndex)!)
+                    SMTEkElementName :
+                        textIdentifier![(srchRange!.upperBound)...]
                 ]
             }
             return nil
@@ -148,16 +151,16 @@ class SMThirdViewController: UIViewController, SMTextExpanderViewController, SMT
         // Dispose of any resources that can be recreated.
     }
     
-    func webViewDidStartLoad(webView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         print("webViewDidStartLoad")
     }
     
-    func webViewDidFinishLoad(inWebView: UIWebView) {
-        inWebView.stringByEvaluatingJavaScriptFromString("document.body.contentEditable ='true'; document.designMode='on';")!
+    func webViewDidFinishLoad(_ inWebView: UIWebView) {
+        _ = inWebView.stringByEvaluatingJavaScript(from: "document.body.contentEditable ='true'; document.designMode='on';")!
         print("webViewDidFinishLoad")
     }
-    
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        print("webView:didFailLoadWithError: \(error!)")
+
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        print("webView:didFailLoadWithError: \(error)")
     }
 }

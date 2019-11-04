@@ -55,14 +55,14 @@ class SMFirstViewController: UIViewController, SMTextExpanderViewController, SMT
  * Unless there is only one editable area in your web view, this implies that the returned
  * identifier string needs to include element id/name information. Eg. "webview-field2".
  */
-    func identifierForTextArea(uiTextObject: AnyObject!) -> String? {
-        if (self.textView! === uiTextObject) {
+    func identifier(forTextArea uiTextObject: Any!) -> String! {
+        if (self.textView! === (uiTextObject as! UITextView)) {
             return "myTextView";
         }
-        if (self.textField! === uiTextObject) {
+        if (self.textField! === (uiTextObject as! UITextField)) {
             return "myTextField";
         }
-        if (self.searchBar! === uiTextObject) {
+        if (self.searchBar! === (uiTextObject as! UISearchBar)) {
             return "mySearchBar";
         }
         return nil;
@@ -104,21 +104,21 @@ class SMFirstViewController: UIViewController, SMTextExpanderViewController, SMT
  * at this point unless userCanceledFill is set. Even in the cancel case, they will likely
  * expect the identified text object to become the first responder.
  */
-    func makeIdentifiedTextObjectFirstResponder(textIdentifier: String!, fillWasCanceled userCanceledFill: Bool, cursorPosition ioInsertionPointLocation: UnsafeMutablePointer<Int>) -> AnyObject! {
+    func makeIdentifiedTextObjectFirstResponder(_ textIdentifier: String!, fillWasCanceled userCanceledFill: Bool, cursorPosition ioInsertionPointLocation: UnsafeMutablePointer<Int>) -> Any! {
         self.snippetExpanded = true;
         if ("myTextView" == textIdentifier) {
             self.textView?.becomeFirstResponder()
-            let theLoc = self.textView?.positionFromPosition((self.textView?.beginningOfDocument)!, offset: ioInsertionPointLocation.memory);
+            let theLoc = self.textView?.position(from: (self.textView?.beginningOfDocument)!, offset: ioInsertionPointLocation.pointee);
             if ((theLoc) != nil) {
-                self.textView?.selectedTextRange = self.textView?.textRangeFromPosition(theLoc!, toPosition: theLoc!);
+                self.textView?.selectedTextRange = self.textView?.textRange(from: theLoc!, to: theLoc!);
             }
             return self.textView;
         }
         if ("myTextField" == textIdentifier) {
             self.textField?.becomeFirstResponder();
-            let theLoc = self.textView?.positionFromPosition((self.textView?.beginningOfDocument)!, offset: ioInsertionPointLocation.memory);
+            let theLoc = self.textView?.position(from: (self.textView?.beginningOfDocument)!, offset: ioInsertionPointLocation.pointee);
             if ((theLoc) != nil) {
-                self.textField?.selectedTextRange = self.textField?.textRangeFromPosition(theLoc!, toPosition: theLoc!);
+                self.textField?.selectedTextRange = self.textField?.textRange(from: theLoc!, to: theLoc!);
             }
             return self.textField
         }
@@ -129,8 +129,8 @@ class SMFirstViewController: UIViewController, SMTextExpanderViewController, SMT
             // presenting the fill-in window, the search bar might now be empty to we should return
             // insertionPointLocation of 0.
             let searchTextLen = ((self.searchBar?.text)! as NSString).length
-            if (searchTextLen < ioInsertionPointLocation.memory) {
-                ioInsertionPointLocation.memory = searchTextLen
+            if (searchTextLen < ioInsertionPointLocation.pointee) {
+                ioInsertionPointLocation.pointee = searchTextLen
             }
             return self.searchBar
         }
@@ -138,21 +138,21 @@ class SMFirstViewController: UIViewController, SMTextExpanderViewController, SMT
     }
     
     func setupKeyboardDismissal() {
-        let nc: NSNotificationCenter = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
-        nc.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+        let nc: NotificationCenter = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapAnywhere))
     }
     
-    func keyboardWillShow(note: NSNotification) {
+    @objc func keyboardWillShow(note: NSNotification) {
         self.view!.addGestureRecognizer(self.tapRecognizer!)
     }
     
-    func keyboardWillHide(note: NSNotification) {
+    @objc func keyboardWillHide(note: NSNotification) {
         self.view!.removeGestureRecognizer(self.tapRecognizer!)
     }
     
-    func didTapAnywhere(recognizer: UITapGestureRecognizer) {
+    @objc func didTapAnywhere(recognizer: UITapGestureRecognizer) {
         recognizer.view!.endEditing(true)
     }
 
@@ -185,9 +185,9 @@ class SMFirstViewController: UIViewController, SMTextExpanderViewController, SMT
         if self.textExpander!.isAttemptingToExpandText {
             self.snippetExpanded = true
         }
-        print("nextDelegate textView:shouldChangeTextInRange: \(NSStringFromRange(range)) originalText: \(aTextView.text) replacementText: \(text)")
+        print("nextDelegate textView:shouldChangeTextInRange: \(NSStringFromRange(range)) originalText: \(aTextView.text as String) replacementText: \(text)")
         return true
-    }
+    } 
     
     func textViewDidChange(textView: UITextView) {
         if self.snippetExpanded {

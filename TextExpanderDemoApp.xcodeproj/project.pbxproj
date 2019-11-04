@@ -33,9 +33,10 @@
 		307C4A3F18414CDA00A7C044 /* SMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C4A3E18414CD900A7C044 /* SMSettingsViewController.m */; };
 		30A7A81C1992B26F00041066 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A7A81B1992B26F00041066 /* KeyboardViewController.m */; };
 		30A7A8271992B30E00041066 /* DemoAppKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */; };
+		30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
 		30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A271841315A00A7C044 /* AudioToolbox.framework */; };
-		30B6E8901D4A822F0046629A /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B6E88F1D4A822F0046629A /* TextExpander.framework */; };
-		30F117621B110658004F3737 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F117611B110658004F3737 /* JavaScriptCore.framework */; };
+		30BF18122367B20500081C36 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
+		30BF18132367B20500081C36 /* TextExpander.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,13 +50,15 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		30FCE7081BA5D7CC00B26DCB /* CopyFiles */ = {
+		30BF18142367B20500081C36 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				30BF18132367B20500081C36 /* TextExpander.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -83,6 +86,7 @@
 		307C4A1A18412EC200A7C044 /* SMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSecondViewController.m; sourceTree = "<group>"; };
 		307C4A1C18412EC200A7C044 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		307C4A1E18412EC200A7C044 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		307C4A251841314D00A7C044 /* TextExpander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TextExpander.framework; sourceTree = SOURCE_ROOT; };
 		307C4A271841315A00A7C044 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		307C4A291841316800A7C044 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		307C4A2B184134DA00A7C044 /* SMThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMThirdViewController.h; sourceTree = "<group>"; };
@@ -99,8 +103,6 @@
 		30A7A81B1992B26F00041066 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
 		30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoAppKeyboard.xib; sourceTree = "<group>"; };
 		30A7A82A1992B62800041066 /* DemoAppKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DemoAppKeyboard.entitlements; sourceTree = "<group>"; };
-		30B6E88F1D4A822F0046629A /* TextExpander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TextExpander.framework; sourceTree = "<group>"; };
-		30F117611B110658004F3737 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B6E8901D4A822F0046629A /* TextExpander.framework in Frameworks */,
-				30F117621B110658004F3737 /* JavaScriptCore.framework in Frameworks */,
+				30BF18122367B20500081C36 /* TextExpander.framework in Frameworks */,
 				307C4A2A1841316800A7C044 /* CoreText.framework in Frameworks */,
 				307C4A281841315A00A7C044 /* AudioToolbox.framework in Frameworks */,
 				307C49F518412EC200A7C044 /* UIKit.framework in Frameworks */,
@@ -122,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */,
 				30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,13 +153,12 @@
 		307C49F318412EC200A7C044 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30B6E88F1D4A822F0046629A /* TextExpander.framework */,
-				30F117611B110658004F3737 /* JavaScriptCore.framework */,
 				307C4A271841315A00A7C044 /* AudioToolbox.framework */,
 				307C49F818412EC200A7C044 /* CoreGraphics.framework */,
 				307C4A291841316800A7C044 /* CoreText.framework */,
 				307C49F618412EC200A7C044 /* Foundation.framework */,
 				307C49F418412EC200A7C044 /* UIKit.framework */,
+				307C4A251841314D00A7C044 /* TextExpander.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,7 +235,7 @@
 				307C49EE18412EC200A7C044 /* Frameworks */,
 				307C49EF18412EC200A7C044 /* Resources */,
 				30A7A8251992B26F00041066 /* Embed App Extensions */,
-				30FCE7081BA5D7CC00B26DCB /* CopyFiles */,
+				30BF18142367B20500081C36 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,10 +270,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SM;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Greg Scown";
 				TargetAttributes = {
 					307C49F018412EC200A7C044 = {
+						DevelopmentTeam = 7PKJ6G4DXL;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -295,6 +297,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 307C49E818412EC200A7C044;
@@ -398,7 +401,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -410,8 +412,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -436,7 +437,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -447,16 +448,17 @@
 		307C4A2318412EC200A7C044 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextExpanderDemoApp/TextExpanderDemoApp-Prefix.pch";
 				INFOPLIST_FILE = "TextExpanderDemoApp/TextExpanderDemoApp-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smileonmymac.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.textexpanderdemoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -466,16 +468,17 @@
 		307C4A2418412EC200A7C044 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextExpanderDemoApp/TextExpanderDemoApp-Prefix.pch";
 				INFOPLIST_FILE = "TextExpanderDemoApp/TextExpanderDemoApp-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smileonmymac.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.textexpanderdemoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -508,10 +511,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = DemoAppKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smileonmymac.TextExpanderDemoApp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -541,9 +544,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = DemoAppKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smileonmymac.TextExpanderDemoApp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
