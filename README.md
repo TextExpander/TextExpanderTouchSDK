@@ -54,7 +54,7 @@ Note: To dismiss the keyboard, tap the whitespace to the left or right of the te
 
 ## Allow querying and opening the TextExpander touch app
 
-As of iOS 9 you must "whitelist" TextExpander URL schemes so that `openURL` and `canOpenURL` can work properly.
+As of iOS 9 you must add TextExpander URL schemes to `LSApplicationQueriesSchemes` so that `canOpenURL` can work properly.
 
 1. Select your app's target
 2. Click on "Info"
