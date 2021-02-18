@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,10 +33,9 @@
 		307C4A3F18414CDA00A7C044 /* SMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 307C4A3E18414CD900A7C044 /* SMSettingsViewController.m */; };
 		30A7A81C1992B26F00041066 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A7A81B1992B26F00041066 /* KeyboardViewController.m */; };
 		30A7A8271992B30E00041066 /* DemoAppKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */; };
-		30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
 		30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A271841315A00A7C044 /* AudioToolbox.framework */; };
-		30BF18122367B20500081C36 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; };
-		30BF18132367B20500081C36 /* TextExpander.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 307C4A251841314D00A7C044 /* TextExpander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30CA380225AD58C300EFCA9B /* TextExpander.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CA37FF25AD58BF00EFCA9B /* TextExpander.xcframework */; };
+		30CA380325AD58C300EFCA9B /* TextExpander.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30CA37FF25AD58BF00EFCA9B /* TextExpander.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				30BF18132367B20500081C36 /* TextExpander.framework in Embed Frameworks */,
+				30CA380325AD58C300EFCA9B /* TextExpander.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,7 +85,6 @@
 		307C4A1A18412EC200A7C044 /* SMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSecondViewController.m; sourceTree = "<group>"; };
 		307C4A1C18412EC200A7C044 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		307C4A1E18412EC200A7C044 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		307C4A251841314D00A7C044 /* TextExpander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TextExpander.framework; sourceTree = SOURCE_ROOT; };
 		307C4A271841315A00A7C044 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		307C4A291841316800A7C044 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		307C4A2B184134DA00A7C044 /* SMThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMThirdViewController.h; sourceTree = "<group>"; };
@@ -103,6 +101,7 @@
 		30A7A81B1992B26F00041066 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
 		30A7A8261992B30E00041066 /* DemoAppKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoAppKeyboard.xib; sourceTree = "<group>"; };
 		30A7A82A1992B62800041066 /* DemoAppKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DemoAppKeyboard.entitlements; sourceTree = "<group>"; };
+		30CA37FF25AD58BF00EFCA9B /* TextExpander.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TextExpander.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,10 +109,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30BF18122367B20500081C36 /* TextExpander.framework in Frameworks */,
 				307C4A2A1841316800A7C044 /* CoreText.framework in Frameworks */,
 				307C4A281841315A00A7C044 /* AudioToolbox.framework in Frameworks */,
 				307C49F518412EC200A7C044 /* UIKit.framework in Frameworks */,
+				30CA380225AD58C300EFCA9B /* TextExpander.xcframework in Frameworks */,
 				307C49F718412EC200A7C044 /* Foundation.framework in Frameworks */,
 				307C49F918412EC200A7C044 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -123,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A7A8281992B3BC00041066 /* TextExpander.framework in Frameworks */,
 				30A7A8291992B57200041066 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +156,7 @@
 				307C4A291841316800A7C044 /* CoreText.framework */,
 				307C49F618412EC200A7C044 /* Foundation.framework */,
 				307C49F418412EC200A7C044 /* UIKit.framework */,
-				307C4A251841314D00A7C044 /* TextExpander.framework */,
+				30CA37FF25AD58BF00EFCA9B /* TextExpander.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -457,7 +455,10 @@
 				GCC_PREFIX_HEADER = "TextExpanderDemoApp/TextExpanderDemoApp-Prefix.pch";
 				INFOPLIST_FILE = "TextExpanderDemoApp/TextExpanderDemoApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.textexpanderdemoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -477,7 +478,10 @@
 				GCC_PREFIX_HEADER = "TextExpanderDemoApp/TextExpanderDemoApp-Prefix.pch";
 				INFOPLIST_FILE = "TextExpanderDemoApp/TextExpanderDemoApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.textexpanderdemoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -512,9 +516,14 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = DemoAppKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.textexpanderdemoappkeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -545,8 +554,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = DemoAppKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.textexpanderdemoappkeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

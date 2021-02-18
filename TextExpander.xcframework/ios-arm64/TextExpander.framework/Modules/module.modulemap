@@ -1,0 +1,6 @@
+framework module TextExpander {
+  umbrella header "TextExpander.h"
+
+  export *
+  module * { export * }
+}

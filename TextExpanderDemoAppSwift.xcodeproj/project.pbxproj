@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		305E321D236B985600B56978 /* TextExpander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F5F1A11D4A5424005B8F7B /* TextExpander.framework */; };
-		305E321E236B985600B56978 /* TextExpander.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30F5F1A11D4A5424005B8F7B /* TextExpander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30EC619A25DDBF0C00901590 /* TextExpander.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EC619925DDBF0C00901590 /* TextExpander.xcframework */; };
+		30EC619B25DDBF0C00901590 /* TextExpander.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30EC619925DDBF0C00901590 /* TextExpander.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		30F5F16F1D443571005B8F7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F16E1D443571005B8F7B /* AppDelegate.swift */; };
 		30F5F1711D443571005B8F7B /* SMFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F1701D443571005B8F7B /* SMFirstViewController.swift */; };
 		30F5F1731D443571005B8F7B /* SMSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F5F1721D443571005B8F7B /* SMSecondViewController.swift */; };
@@ -29,7 +29,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				305E321E236B985600B56978 /* TextExpander.framework in Embed Frameworks */,
+				30EC619B25DDBF0C00901590 /* TextExpander.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30EC619925DDBF0C00901590 /* TextExpander.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TextExpander.xcframework; sourceTree = "<group>"; };
 		30F5F16B1D443571005B8F7B /* TextExpanderDemoAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextExpanderDemoAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F5F16E1D443571005B8F7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30F5F1701D443571005B8F7B /* SMFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMFirstViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		30F5F18A1D4578D6005B8F7B /* SMSwiftWorkarounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSwiftWorkarounds.m; sourceTree = "<group>"; };
 		30F5F1901D458665005B8F7B /* SMTextExpanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMTextExpanderViewController.swift; sourceTree = "<group>"; };
 		30F5F1921D458A70005B8F7B /* SMThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMThirdViewController.swift; sourceTree = "<group>"; };
-		30F5F1A11D4A5424005B8F7B /* TextExpander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TextExpander.framework; path = ../TextExpander/teTouchSDK/TextExpander.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,19 +60,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				305E321D236B985600B56978 /* TextExpander.framework in Frameworks */,
+				30EC619A25DDBF0C00901590 /* TextExpander.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30EC619825DDBF0C00901590 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30EC619925DDBF0C00901590 /* TextExpander.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		30F5F1621D443571005B8F7B = {
 			isa = PBXGroup;
 			children = (
 				30F5F16D1D443571005B8F7B /* TextExpanderDemoAppSwift */,
 				30F5F16C1D443571005B8F7B /* Products */,
-				30F5F1A11D4A5424005B8F7B /* TextExpander.framework */,
+				30EC619825DDBF0C00901590 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,7 +317,10 @@
 				);
 				INFOPLIST_FILE = TextExpanderDemoAppSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.TextExpanderDemoAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TextExpanderDemoAppSwift/TextExpanderDemoAppSwift-Bridging-Header.h";
@@ -330,7 +341,10 @@
 				);
 				INFOPLIST_FILE = TextExpanderDemoAppSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smileonmymac.TextExpanderDemoAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TextExpanderDemoAppSwift/TextExpanderDemoAppSwift-Bridging-Header.h";

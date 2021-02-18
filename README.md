@@ -45,12 +45,12 @@ Note: To dismiss the keyboard, tap the whitespace to the left or right of the te
 
 ## Add TextExpander to Your Project
 
-1. Drag TextExpander.framework into your project
+1. Drag TextExpander.xcframework into your project
 2. Select your app's target
 3. Click on "General"
 4. Scroll down to "Frameworks, Libraries, and Embedded Content"
-5. Drag the TextExpander.framework from your project to that list
-6. Select "Embed & Sign" from the popup to the right of where TextExpander.framework appears in the list
+5. Drag the TextExpander.xcframework from your project to that list
+6. Select "Embed & Sign" from the popup to the right of where TextExpander.xcframework appears in the list
 
 ## Allow querying and opening the TextExpander touch app
 
@@ -267,7 +267,7 @@ Permission is hereby granted to use, copy, and distribute this library, without 
 
 1. The origin of this library must not be misrepresented
 2. Apps which use this library must indicate "Supports TextExpander snippet expansion" in their feature set or product description
-3. Apps which use this library must indicate "Contains TextExpander framework, Copyright © 2009-2019 SmileOnMyMac, LLC dba Smile. TextExpander is a registered trademark" in their about box and the paragraph above in their license agreement. It is acceptable to link to the license agreement text posted on the app developer's website if that is more appropriate for a given app.
+3. Apps which use this library must indicate "Contains TextExpander framework, Copyright © 2009-2021 SmileOnMyMac, LLC dba Smile. TextExpander is a registered trademark" in their about box and the paragraph above in their license agreement. It is acceptable to link to the license agreement text posted on the app developer's website if that is more appropriate for a given app.
 
 If your app has special needs with respect to the above restrictions, please address them, preferably with specific suggestions, via email to [textexpander-touch@smilesoftware.com](mailto:textexpander-touch@smilesoftware.com). Perhaps we can find a mutually agreeable solution.
 
@@ -326,6 +326,10 @@ Thank you,
 
 
 ### Release Notes
+
+**4.6,5 (2021-02-17)**
+
+- Move from TextExpander.framework to TextExpander.xcframework for easier build, packaging, and simulation / testing
 
 **4.5 (2019-11-04)**
 
