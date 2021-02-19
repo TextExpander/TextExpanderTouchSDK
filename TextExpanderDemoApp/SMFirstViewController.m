@@ -209,7 +209,7 @@
 - (void)twiddleText:(UITextView*)textView {
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        [self.textView.textStorage edited:NSTextStorageEditedCharacters range:NSMakeRange(0, textView.textStorage.length) changeInLength:0];
+        [textView.textStorage edited:NSTextStorageEditedCharacters range:NSMakeRange(0, textView.textStorage.length) changeInLength:0];
     }
 #endif
 }
